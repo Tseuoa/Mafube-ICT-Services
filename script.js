@@ -1,1 +1,0 @@
-const toggle=document.querySelector('.menu-toggle');const nav=document.querySelector('#mainNav');toggle?.addEventListener('click',()=>{const open=nav.style.display==='flex';nav.style.display=open?'none':'flex';toggle.setAttribute('aria-expanded',String(!open));});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=850)nav.style.display='none';}));

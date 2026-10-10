@@ -1,21 +1,26 @@
 # Mafube ICT Services — Responsive Website
 Upload `index.html`, `styles.css`, `script.js` and `assets/` for a static site. Automatic enquiry email requires deploying the Node server as described below; GitHub Pages alone cannot send email.
 
-## Automatic contact email
-The contact form sends enquiries to `silas.tseuoa@mafubeservices.co.za` through the Node server's `/api/contact` endpoint using SMTP. Visitors do not need Outlook or another email app.
+## Automatic contact email with Microsoft 365
+The contact form posts to `/api/contact`. The Node server uses Microsoft Graph app-only authentication to send enquiries to `silas.tseuoa@mafubeservices.co.za`; visitors do not need Outlook. This requires that the address is a mailbox in a Microsoft 365 work/school tenant. A personal Microsoft account needs a different delegated OAuth flow.
 
-### Prepared Render + Brevo setup
-`render.yaml` prepares a Node web service with Brevo SMTP on port `2525` (Render Free blocks the usual SMTP ports `25`, `465` and `587`). To activate it:
+### Configure the Microsoft Entra application
+1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com) with an administrator account for the Microsoft 365 tenant that owns the mailbox.
+2. Go to **Identity → Applications → App registrations → New registration**. Create a single-tenant app, for example `Mafube Website Contact Mailer`, and save its **Application (client) ID** and **Directory (tenant) ID**.
+3. Create a client secret under **Certificates & secrets** and copy its **Value** immediately. The Microsoft account password is not the app secret. Store the value only in the Render secret setting described below.
+4. Grant the app permission to send as the mailbox. Recommended: use Exchange Online **Application RBAC** to scope the `Application Mail.Send` role to only `silas.tseuoa@mafubeservices.co.za`. Do not also grant an unscoped tenant-wide `Mail.Send` application permission, because that defeats the mailbox restriction. This requires an Exchange Administrator/Organization Management administrator. Follow Microsoft's [Application RBAC guidance](https://learn.microsoft.com/en-us/exchange/permissions-exo/application-rbac) and test the service principal's authorization against the Silas mailbox and an unrelated mailbox. If an administrator instead grants Entra's `Mail.Send` application permission, understand it is tenant-wide unless separately constrained.
 
-1. Create or sign in to a Render account and create a new **Blueprint** for this GitHub repository using `render.yaml`.
-2. Create or sign in to a Brevo account, verify `silas.tseuoa@mafubeservices.co.za` as a sender (or verify a domain), and generate SMTP credentials. Use the **SMTP login** for `SMTP_USER`, the generated **SMTP key** (not the API key) for `SMTP_PASSWORD`, and the verified sender address for `SMTP_FROM`.
-3. Enter those three values in Render when prompted. Keep the password in Render's environment settings; never put it in this repository.
-4. After deployment, test `https://<your-render-service>.onrender.com/api/health` and submit the contact form on that Render URL.
-5. To use `mafubeservices.co.za`, add it as a custom domain to the Render service and update the domain's DNS records as Render instructs. GitHub Pages cannot run the `/api/contact` backend, so the domain must point to the Node service for the form to work on the main website.
+### Deploy the Node service
+`render.yaml` prepares a Render Blueprint with the Graph endpoint and secret settings:
 
-The blueprint selects Render's Free plan to avoid configuring a paid service without approval. Free web services can sleep after inactivity and may take about a minute to wake; Render also documents Free as unsuitable for production use. Upgrade the service in Render if reliable always-on production operation is required. Provisioning the Render/Brevo accounts, verifying the sender, adding DNS records, and entering credentials require access to those accounts; those actions cannot be completed by repository code alone.
+1. In Render, create a Blueprint for this GitHub repository using `render.yaml`.
+2. Enter `MS_TENANT_ID` (Directory/tenant ID), `MS_CLIENT_ID` (Application/client ID), and `MS_CLIENT_SECRET` (the secret **Value**) when prompted. `MS_SENDER` is prefilled as `silas.tseuoa@mafubeservices.co.za`. Never commit any app secret to Git or put it in browser code.
+3. Wait for deployment and check `https://<your-render-service>.onrender.com/api/health` returns `{"ok":true}`. Submit a test enquiry on the Render URL and confirm it arrives in Silas's mailbox.
+4. To use `mafubeservices.co.za`, add it as a custom domain to the Render service and update DNS exactly as Render instructs. GitHub Pages cannot run `/api/contact`; the domain must route to the Node service for automatic contact email to work on the public website.
 
-The contact email endpoint does not require MySQL. The optional `/api/leads` feature does. Install dependencies with `npm install`, then start the app with `npm start`.
+The blueprint uses Render's Free plan to avoid unapproved hosting charges. Free services may sleep after inactivity and can take about a minute to wake; Render documents Free as unsuitable for production. Upgrade the service for reliable always-on operation. Creating the Entra app, granting scoped mailbox access, creating the secret, deploying the Blueprint, and changing DNS require access to the corresponding Microsoft, Render, and domain accounts.
+
+The email endpoint does not require MySQL. The optional `/api/leads` feature does. Install dependencies with `npm install`, then start the app with `npm start`.
 
 ## Database lead storage
 For optional database lead storage, run the Node server with MySQL/MariaDB:

@@ -11,3 +11,6 @@ GitHub Pages is static and cannot run `server.js`; use a VPS, cPanel Node/PHP ho
 
 ## Microsoft media
 The website now includes a Microsoft technology section with locally stored illustrative Microsoft 365, Azure, Teams and Copilot graphics, plus responsive official Microsoft Learn video embeds. Video links point to Microsoft-hosted learning resources.
+
+## Gallery and new tabs
+The gallery uses product and collaboration images already in `assets/images/`; select an image to open its full-size version in a new browser tab. Main section navigation, service enquiry links and video resources also open in a separate tab so the landing page stays available.

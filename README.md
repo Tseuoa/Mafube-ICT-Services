@@ -7,7 +7,7 @@ The contact form opens a pre-filled email addressed to `silas.tseuoa@mafubeservi
 2. `npm install`
 3. Set `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME=mafube_ict`
 4. `npm start`
-GitHub Pages is static and cannot run `server.js`; use a VPS, cPanel Node/PHP hosting, or another backend host for the database API.
+The homepage visitor badge is provided by [hits.sh](https://hits.sh) so it works on static hosting such as GitHub Pages without a Node.js API or database migration. It displays recorded hits for `mafubeservices.co.za`; the total represents counter-service hits, not unique people or historical visits from before the badge was published. The badge is served by a third party and may not display if that service is unavailable or blocked.
 
 ## Microsoft media
 The website now includes a Microsoft technology section with locally stored illustrative Microsoft 365, Azure, Teams and Copilot graphics, plus responsive official Microsoft Learn video embeds. Video links point to Microsoft-hosted learning resources.

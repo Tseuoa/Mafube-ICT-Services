@@ -56,6 +56,8 @@ main section[id]{scroll-margin-top:90px}
 .brand-logo{width:42px;height:42px;flex:0 0 42px;object-fit:cover;border-radius:10px}
 .footer-brand .brand-logo{border:1px solid rgba(255,255,255,.2)}
 .bbbee-marquee{overflow:hidden;max-width:100%;white-space:nowrap}
+.visitor-counter{display:flex;align-items:center;gap:7px;margin:0 0 8px;color:var(--muted);font-size:.82rem;font-weight:600}
+.visitor-counter img{width:auto;height:20px}
 .bbbee-marquee span{display:inline-block;min-width:max-content;animation:bbbee-scroll 12s linear infinite}
 @keyframes bbbee-scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 .menu-toggle{border-radius:8px;padding:6px 10px;color:var(--navy);cursor:pointer}

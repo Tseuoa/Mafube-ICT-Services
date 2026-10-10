@@ -55,10 +55,10 @@ main section[id]{scroll-margin-top:90px}
 .visual figcaption{pointer-events:none}
 .brand-logo{width:42px;height:42px;flex:0 0 42px;object-fit:cover;border-radius:10px}
 .footer-brand .brand-logo{border:1px solid rgba(255,255,255,.2)}
-.bbbee-marquee{overflow:hidden;max-width:100%;white-space:nowrap}
-.bbbee-marquee span{display:inline-block;min-width:max-content;animation:bbbee-scroll 12s linear infinite}
-@keyframes bbbee-scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.bbbee-marquee{position:relative;display:block;width:100vw;height:1.25em;margin:0 0 10px calc(50% - 50vw);overflow:hidden;white-space:nowrap}
+.bbbee-marquee span{position:absolute;left:100%;top:0;min-width:max-content;animation:bbbee-scroll 12s linear infinite}
+@keyframes bbbee-scroll{from{left:100%;transform:translateX(0)}to{left:0;transform:translateX(-100%)}}
 .menu-toggle{border-radius:8px;padding:6px 10px;color:var(--navy);cursor:pointer}
 .menu-toggle:hover{background:#eef5ff}
 @media(max-width:650px){nav{border-top:1px solid #e8edf3}.menu-toggle{min-width:44px;min-height:44px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.bbbee-marquee span{animation:none;transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.bbbee-marquee span{animation:none;left:0;transform:none}}

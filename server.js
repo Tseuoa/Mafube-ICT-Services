@@ -2,6 +2,7 @@ const express=require('express'), mysql=require('mysql2/promise'), nodemailer=re
 const app=express(); if(process.env.TRUST_PROXY==='true')app.set('trust proxy',1); app.use(express.json({limit:'20kb'})); app.use(express.static(__dirname));
 const pool=mysql.createPool({host:process.env.DB_HOST||'localhost',user:process.env.DB_USER||'root',password:process.env.DB_PASSWORD||'',database:process.env.DB_NAME||'mafube_ict'});
 const contactAttempts=new Map(),contactWindowMs=15*60*1000,contactMaxAttempts=5;
+app.get('/api/health',(req,res)=>res.json({ok:true}));
 app.post('/api/contact',async(req,res)=>{
  const {name,company,email,message}=req.body||{};
  if(typeof name!=='string'||typeof email!=='string'||typeof message!=='string'||!name.trim()||!email.trim()||!message.trim())return res.status(400).json({error:'Name, email and message are required.'});

@@ -2,17 +2,20 @@
 Upload `index.html`, `styles.css`, `script.js` and `assets/` for a static site. Automatic enquiry email requires deploying the Node server as described below; GitHub Pages alone cannot send email.
 
 ## Automatic contact email
-The contact form sends enquiries to `silas.tseuoa@mafubeservices.co.za` through the Node server's `/api/contact` endpoint using SMTP. Visitors do not need Outlook or another email app. Configure these environment variables on the Node host (never in client-side files):
+The contact form sends enquiries to `silas.tseuoa@mafubeservices.co.za` through the Node server's `/api/contact` endpoint using SMTP. Visitors do not need Outlook or another email app.
 
-- `SMTP_HOST` — SMTP server hostname
-- `SMTP_PORT` — SMTP port (defaults to `587`; port `465` uses TLS automatically)
-- `SMTP_SECURE` — set to `true` to use TLS directly when required by the provider
-- `SMTP_USER` and `SMTP_PASSWORD` — SMTP account credentials or provider-issued app password
-- `SMTP_FROM` — optional verified sender address; defaults to `SMTP_USER`
-- `TRUST_PROXY` — set to `true` only when the Node app is behind one trusted reverse proxy, so the enquiry rate limit can use the visitor IP
+### Prepared Render + Brevo setup
+`render.yaml` prepares a Node web service with Brevo SMTP on port `2525` (Render Free blocks the usual SMTP ports `25`, `465` and `587`). To activate it:
 
-Deploy the site and Node server together on a Node-capable host with these settings for automatic email delivery. GitHub Pages is static and cannot run `/api/contact`; the live site must be moved to the Node host before the form can send emails. Until then, the form displays a message if the endpoint is unavailable.
-Install the updated dependencies with `npm install`, then start the app with `npm start`. The contact email endpoint does not require MySQL; the optional `/api/leads` feature does.
+1. Create or sign in to a Render account and create a new **Blueprint** for this GitHub repository using `render.yaml`.
+2. Create or sign in to a Brevo account, verify `silas.tseuoa@mafubeservices.co.za` as a sender (or verify a domain), and generate SMTP credentials. Use the **SMTP login** for `SMTP_USER`, the generated **SMTP key** (not the API key) for `SMTP_PASSWORD`, and the verified sender address for `SMTP_FROM`.
+3. Enter those three values in Render when prompted. Keep the password in Render's environment settings; never put it in this repository.
+4. After deployment, test `https://<your-render-service>.onrender.com/api/health` and submit the contact form on that Render URL.
+5. To use `mafubeservices.co.za`, add it as a custom domain to the Render service and update the domain's DNS records as Render instructs. GitHub Pages cannot run the `/api/contact` backend, so the domain must point to the Node service for the form to work on the main website.
+
+The blueprint selects Render's Free plan to avoid configuring a paid service without approval. Free web services can sleep after inactivity and may take about a minute to wake; Render also documents Free as unsuitable for production use. Upgrade the service in Render if reliable always-on production operation is required. Provisioning the Render/Brevo accounts, verifying the sender, adding DNS records, and entering credentials require access to those accounts; those actions cannot be completed by repository code alone.
+
+The contact email endpoint does not require MySQL. The optional `/api/leads` feature does. Install dependencies with `npm install`, then start the app with `npm start`.
 
 ## Database lead storage
 For optional database lead storage, run the Node server with MySQL/MariaDB:

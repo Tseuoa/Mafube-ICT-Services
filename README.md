@@ -2,7 +2,7 @@
 Upload `index.html`, `styles.css`, `script.js` and `assets/` to static hosting such as GitHub Pages.
 
 ## Database-enabled version
-The contact form posts to `/api/leads`. Run the Node server with MySQL/MariaDB:
+The contact form opens a pre-filled email addressed to `silas.tseuoa@mafubeservices.co.za`; the visitor reviews and sends it using their email app. A configured mail application is required for this flow. For database lead storage, the Node server can also accept `/api/leads`. Run it with MySQL/MariaDB:
 1. Create the database using `database.sql`.
 2. `npm install`
 3. Set `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME=mafube_ict`

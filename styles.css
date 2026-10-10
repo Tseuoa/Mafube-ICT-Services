@@ -50,7 +50,15 @@ main section[id]{scroll-margin-top:90px}
 .contact-form label span{font-weight:400;color:var(--muted)}
 .contact-list a:hover,.footer-grid a:hover,.video-link:hover{color:#77b7ff}
 .card a:hover{color:#084fa8}
+.visual>a{position:absolute;inset:0;z-index:1;display:block}
+.visual>a img{cursor:zoom-in}
+.visual figcaption{pointer-events:none}
+.brand-logo{width:42px;height:42px;flex:0 0 42px;object-fit:cover;border-radius:10px}
+.footer-brand .brand-logo{border:1px solid rgba(255,255,255,.2)}
+.bbbee-marquee{overflow:hidden;max-width:100%;white-space:nowrap}
+.bbbee-marquee span{display:inline-block;min-width:max-content;animation:bbbee-scroll 12s linear infinite}
+@keyframes bbbee-scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 .menu-toggle{border-radius:8px;padding:6px 10px;color:var(--navy);cursor:pointer}
 .menu-toggle:hover{background:#eef5ff}
 @media(max-width:650px){nav{border-top:1px solid #e8edf3}.menu-toggle{min-width:44px;min-height:44px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.bbbee-marquee span{animation:none;transform:none}}

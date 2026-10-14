@@ -101,7 +101,8 @@ main section[id]{scroll-margin-top:116px}
 @media(max-width:650px){nav{border-top:1px solid #e8edf3}.menu-toggle{min-width:44px;min-height:44px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.bbbee-marquee span{animation:none;transform:none}}
 .top-info-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
-.home-banner img{display:block;width:75%;max-width:100%;height:auto;margin-inline:auto}
+.home-banner{width:75%;max-width:100%;aspect-ratio:3/1;margin-inline:auto;overflow:hidden}
+.home-banner img{display:block;width:100%;height:100%;object-fit:cover}
 .top-info-bar .visitor-counter{margin:0}
 .top-info-bar .bbbee-marquee{max-width:60%;margin:0;white-space:nowrap}
 .top-info-bar .bbbee-marquee span{min-width:max-content;animation:bbbee-scroll 12s linear infinite}

@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <meta name="description" content="Mafube ICT Services provides business ICT solutions, hosted PBX, IP telephony, unified communications, networking, cloud and IT services.">
+  <meta name="theme-color" content="#071a33">
+
+  <title>Mafube ICT Services | Business ICT, Voice & Connectivity</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- About dropdown styling -->
+  <style>
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      padding: 8px;
+      background: #102b50;
+      border: 1px solid #29466b;
+      border-radius: 10px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      z-index: 2000;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 11px 13px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      background: #1b416d;
+      color: #7dd3fc;
+      outline: none;
+    }
+
+    /* Desktop dropdown */
+    @media (min-width: 769px) {
+      .nav-dropdown:hover .dropdown-menu,
+      .nav-dropdown:focus-within .dropdown-menu {
+        display: block;
+      }
+    }
+
+    /* Mobile dropdown */
+    @media (max-width: 768px) {
+      .nav-dropdown {
+        display: block;
+        width: 100%;
+      }
+
+      .nav-dropdown-toggle {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px 14px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        padding: 5px 8px 5px 18px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+      }
+
+      .nav-dropdown.is-open .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu a {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ================= HEADER & NAVIGATION ================= -->
+
+<header class="site-header">
+  <div class="container nav-wrap">
+
+    <a class="brand" href="index.html" aria-label="Mafube ICT Services home">
+      <img
+        class="brand-logo"
+        src="assets/images/logo2.jpg"
+        alt="Mafube ICT Services logo"
+      >
+      <span>
+        <strong>Mafube ICT</strong>
+        <small>Services</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="mainNav"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <nav id="mainNav" aria-label="Main navigation">
+
+      <!-- ABOUT DROPDOWN -->
+      <div class="nav-dropdown" id="aboutDropdown">
+
+        <a
+          href="#about"
+          class="nav-dropdown-toggle"
+          id="aboutDropdownToggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          About <span aria-hidden="true">▾</span>
+        </a>
+
+        <div class="dropdown-menu" aria-label="About pages">
+          <a href="#about">About Us</a>
+          <a href="mission.html">Mission</a>
+          <a href="vision.html">Vision</a>
+          <a href="values.html">Values</a>
+          <a href="executive.html">Executive</a>
+        </div>
+
+      </div>
+
+      <a href="#mission-vision">Mission & Vision</a>
+      <a href="#services">Services</a>
+      <a href="#pabx">Hosted PBX</a>
+      <a href="#microsoft">Microsoft</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#video-resources">Videos</a>
+      <a href="#contact">Contact</a>
+      <a href="#careers">Careers</a>
+
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= COMPANY INFORMATION ================= -->
+
+  <div class="top-info-bar container" role="group" aria-label="Company information">
+
+    <p class="visitor-counter">
+      Visitors:
+      <img
+        src="https://hits.sh/mafubeservices.co.za.svg"
+        alt="Website visitor count badge"
+        referrerpolicy="no-referrer"
+      >
+    </p>
+
+    <p class="eyebrow bbbee-marquee" aria-label="Level 1 B-BBEE ICT Company">
+      <span>LEVEL 1 B-BBEE ICT COMPANY</span>
+    </p>
+
+  </div>
+
+  <!-- ================= HOME BANNER ================= -->
+
+  <div class="home-banner">
+    <img
+      src="assets/images/Banner.jpeg"
+      alt="Mafube ICT Services providing connectivity, cloud, cybersecurity, unified communications, 5G and IoT solutions"
+      width="1474"
+      height="983"
+      fetchpriority="high"
+    >
+  </div>
+
+  <!-- ================= HOME ================= -->
+
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+
+      <div>
+        <div class="eyebrow">MAFUBE ICT SERVICES</div>
+
+        <h1>
+          Technology that connects
+          <span>your business.</span>
+        </h1>
+
+        <p class="lead">
+          Information & Communication Technology Services for organisations
+          that need reliable voice, connectivity, collaboration, cloud and IT
+          solutions.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Request a solution</a>
+          <a class="btn ghost" href="#services">Explore services</a>
+        </div>
+
+        <div class="trust-row">
+          <span>✓ Voice & collaboration</span>
+          <span>✓ Cloud & workplace</span>
+          <span>✓ Connectivity & IT</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img
+          src="assets/images/hero-ict.jpg"
+          alt="Modern business technology and network connectivity"
+          loading="eager"
+        >
+
+        <div class="hero-card-overlay">
+          <strong>Connected workplace</strong>
+          <span>Voice • Data • Collaboration • Support</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TECHNOLOGY AREAS ================= -->
+
+  <section class="stats" aria-label="Technology areas">
+    <div class="container stats-grid">
+
+      <div>
+        <strong>Voice</strong>
+        <span>Telephony & hosted PBX</span>
+      </div>
+
+      <div>
+        <strong>Cloud</strong>
+        <span>Microsoft technologies</span>
+      </div>
+
+      <div>
+        <strong>Network</strong>
+        <span>Connectivity solutions</span>
+      </div>
+
+      <div>
+        <strong>IT</strong>
+        <span>Products & support</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+
+  <section id="about" class="section">
+    <div class="container two-col">
+
+      <div>
+        <div class="eyebrow">ABOUT MAFUBE ICT SERVICES</div>
+
+        <h2>Modern ICT, built around your business.</h2>
+
+        <p>
+          Mafube ICT Services provides information and communication
+          technology solutions to help businesses communicate, collaborate
+          and operate efficiently.
+        </p>
+
+        <p>
+          From business telephony and video conferencing to cloud,
+          connectivity and workplace IT, explore our services or get in touch
+          to discuss your requirements.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="mission.html">Our Mission</a>
+          <a class="btn ghost" href="executive.html">Meet the Director</a>
+        </div>
+      </div>
+
+      <div class="about-panel">
+        <div class="mini-icon" aria-hidden="true">M</div>
+
+        <h3>Technology for the way you work</h3>
+
+        <p>
+          Bring the right communication, cloud and IT capabilities together
+          around your business needs.
+        </p>
+
+        <ul>
+          <li>Business communication</li>
+          <li>Connectivity & networking</li>
+          <li>Cloud and workplace technology</li>
+          <li>IT products and support</li>
+        </ul>
+
+        <hr>
+
+        <h3>Discover Mafube ICT Services</h3>
+
+        <ul class="about-page-links">
+          <li><a href="mission.html">Our Mission →</a></li>
+          <li><a href="vision.html">Our Vision →</a></li>
+          <li><a href="values.html">Our Values →</a></li>
+          <li><a href="executive.html">Executive Leadership →</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= MISSION & VISION ================= -->
+
+  <section id="mission-vision" class="section alt">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">OUR PURPOSE</div>
+          <h2>Our Vision & Mission</h2>
+        </div>
+        <p>Our commitment to accessible, reliable and business-focused ICT solutions.</p>
+      </div>
+
+      <div class="two-col">
+        <article class="about-panel">
+          <div class="mini-icon" aria-hidden="true">V</div>
+          <h3>Vision</h3>
+          <p>To become a trusted South African ICT solutions partner delivering accessible, reliable and business-focused technology services.</p>
+        </article>
+
+        <article class="about-panel">
+          <div class="mini-icon" aria-hidden="true">M</div>
+          <h3>Mission</h3>
+          <p>To provide quality ICT products, connectivity, communications, cloud and technical services while building long-term relationships with customers, suppliers and technology partners.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+
+  <section id="services" class="section alt">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">SERVICES</div>
+          <h2>Technology services for the connected business</h2>
+        </div>
+
+        <p>
+          From IP telephony to IT infrastructure, Mafube ICT Services can
+          help you assemble the right technology stack.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="icon">☎</div>
+          <h3>Hosted PBX & VoIP</h3>
+          <p>
+            Cloud-based business telephony, extensions, SIP/VoIP connectivity
+            and IP deskphones.
+          </p>
+          <a href="#contact">Discuss PBX →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">◎</div>
+          <h3>IP Telephony</h3>
+          <p>
+            Business calling environments with IP phones, extensions,
+            call handling and telephony management.
+          </p>
+          <a href="#contact">Discuss telephony →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">▣</div>
+          <h3>Unified Communications</h3>
+          <p>
+            Presence, instant messaging, voicemail, voice recordings and
+            collaboration capabilities.
+          </p>
+          <a href="#contact">Discuss UC →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">◉</div>
+          <h3>Contact Centre</h3>
+          <p>
+            Call-centre solutions designed around customer communication,
+            agents and reporting requirements.
+          </p>
+          <a href="#contact">Discuss contact centre →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">⌁</div>
+          <h3>Connectivity</h3>
+          <p>
+            Fibre, internet, LTE/5G and business connectivity options,
+            subject to availability and partner coverage.
+          </p>
+          <a href="#contact">Request connectivity →</a>
+        </article>
+
+        <article class="card">
+          <div class="icon">▤</div>
+          <h3>IT Products & Support</h3>
+          <p>
+            Computers, peripherals, networking equipment, accessories
+            and practical IT support services.
+          </p>
+          <a href="#contact">Request IT solution →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOLUTIONS ================= -->
+
+  <section id="solutions" class="section">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">SOLUTIONS</div>
+          <h2>One partner, multiple technology layers</h2>
+        </div>
+      </div>
+
+      <div class="solution-grid">
+
+        <div class="solution">
+          <span>01</span>
+          <h3>Communications</h3>
+          <p>
+            Hosted PBX, Yealink-compatible IP phones, VoIP, SIP and business calling.
+          </p>
+        </div>
+
+        <div class="solution">
+          <span>02</span>
+          <h3>Collaboration</h3>
+          <p>
+            Video conferencing, instant messaging, presence, voicemail and recordings.
+          </p>
+        </div>
+
+        <div class="solution">
+          <span>03</span>
+          <h3>Connectivity</h3>
+          <p>
+            Fibre, internet, LTE/5G and network infrastructure for connected sites.
+          </p>
+        </div>
+
+        <div class="solution">
+          <span>04</span>
+          <h3>IT Infrastructure</h3>
+          <p>
+            Laptops, desktops, peripherals, networking, accessories and cloud-enabled workplaces.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOSTED PBX ================= -->
+
+  <section id="pabx" class="section pabx-section">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">HOSTED PABX & VOIP</div>
+          <h2>Business voice that works across sites.</h2>
+        </div>
+
+        <p>
+          Hosted PBX, SIP, VoIP and IP phones for offices, branches,
+          remote teams and contact centres.
+        </p>
+      </div>
+
+      <div class="pabx-feature">
+
+        <div class="pabx-visual">
+
+          <div class="pabx-site-grid" role="group" aria-label="Illustrative connected business sites">
+
+            <figure>
+              <img
+                src="assets/images/building-office-tower.jpg"
+                alt="Modern glass office towers"
+                loading="lazy"
+              >
+              <figcaption>Site 1</figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="assets/images/building-modern-exterior.jpg"
+                alt="Contemporary commercial building"
+                loading="lazy"
+              >
+              <figcaption>Site 2</figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="assets/images/building-architecture.jpg"
+                alt="Modern commercial buildings"
+                loading="lazy"
+              >
+              <figcaption>Site 3</figcaption>
+            </figure>
+
+          </div>
+
+          <div class="pabx-network-label">
+            <strong>HOSTED PBX</strong>
+            <span>VoIP • SIP • Cloud</span>
+          </div>
+
+          <span class="pabx-visual-caption">One phone system. Every site.</span>
+        </div>
+
+        <div class="pabx-copy">
+
+          <span class="pill">MULTI-SITE COMMUNICATIONS</span>
+
+          <h3>Connect your people from one phone system.</h3>
+
+          <p>
+            Build a scalable cloud telephony environment with extensions,
+            IVR, queues, voicemail, call recording and business IP phones.
+          </p>
+
+          <ul>
+            <li>Hosted PBX & SIP trunks</li>
+            <li>Yealink IP desk phones</li>
+            <li>Auto attendant & IVR</li>
+            <li>Call queues & contact centre</li>
+            <li>Remote extensions and branches</li>
+          </ul>
+
+          <a class="btn primary" href="#contact">Request a PABX quotation</a>
+
+        </div>
+      </div>
+
+      <p class="pabx-photo-note">
+        Illustrative building photography; images do not represent specific customer premises.
+      </p>
+
+      <div class="pabx-gallery-heading">
+        <div class="eyebrow">PABX PHONES & EQUIPMENT</div>
+        <h3>See the devices that keep your teams connected.</h3>
+      </div>
+
+      <div class="pabx-gallery">
+
+        <article class="pabx-card">
+          <img
+            src="assets/images/Slide-1-img-121%20-%20Copy.png"
+            alt="Business IP desk phones and call management"
+            loading="lazy"
+          >
+
+          <div>
+            <span>HOSTED PBX</span>
+            <h4>IP desk phones</h4>
+            <p>
+              Business calling with desk phones, extensions and central call management.
+            </p>
+            <a href="#contact">Ask about IP phones →</a>
+          </div>
+        </article>
+
+        <article class="pabx-card">
+          <img
+            src="assets/images/phone_hero_458x353%20-%20Copy.jpg"
+            alt="Conference speakerphone for business calls"
+            loading="lazy"
+          >
+
+          <div>
+            <span>CONFERENCE CALLING</span>
+            <h4>Room-ready audio</h4>
+            <p>
+              Speakerphones designed to bring in-room and remote participants together.
+            </p>
+            <a href="#contact">Discuss conference phones →</a>
+          </div>
+        </article>
+
+        <article class="pabx-card">
+          <img
+            src="assets/images/deskphone.jpg"
+            alt="Business desk phone and video collaboration equipment"
+            loading="lazy"
+          >
+
+          <div>
+            <span>VOICE & COLLABORATION</span>
+            <h4>Teams phone solutions</h4>
+            <p>
+              Bring business voice and video collaboration together across your workplace.
+            </p>
+            <a href="https://www.yealink.com/en/solution-detail/teams-phone"
+               target="_blank"
+               rel="noopener noreferrer">
+              Explore Teams Phone →
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="pabx-gallery-heading pabx-video-heading">
+        <div class="eyebrow">FEATURED VIDEOS</div>
+        <h3>Explore business voice and collaboration.</h3>
+      </div>
+
+      <div class="pabx-videos">
+
+        <article class="pabx-video-card">
+          <div class="pabx-video-frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/B6RYhGZBu0Q"
+              title="Yealink business phone solutions"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div>
+            <span>PABX / IP PHONES</span>
+            <h4>Yealink business phone solutions</h4>
+          </div>
+        </article>
+
+        <article class="pabx-video-card">
+          <div class="pabx-video-frame">
+            <iframe
+              src="https://videos.microsoft.com/discoverteams/watch/Sefa71CK8355JtfKKZ3SC1"
+              title="Introduction to Microsoft Teams for business voice and collaboration"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div>
+            <span>MICROSOFT + VOICE</span>
+            <h4>Microsoft Teams Phone</h4>
+            <a href="https://www.yealink.com/en/solution-detail/teams-phone"
+               target="_blank"
+               rel="noopener noreferrer">
+              Explore Teams Phone →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MICROSOFT ================= -->
+
+  <section id="microsoft" class="section microsoft-section">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">MICROSOFT TECHNOLOGY</div>
+          <h2>Microsoft cloud, productivity & AI</h2>
+        </div>
+
+        <p>
+          Mafube ICT Services can help businesses plan and support Microsoft 365,
+          Azure, Teams and Copilot solutions.
+        </p>
+      </div>
+
+      <div class="microsoft-grid">
+
+        <a class="ms-card"
+           href="https://www.microsoft.com/en-za/microsoft-365/microsoft-365-business"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="assets/images/microsoft-365.svg" alt="Microsoft 365" loading="lazy">
+          <div>
+            <h3>Microsoft 365</h3>
+            <p>Business productivity, email, collaboration and security.</p>
+          </div>
+        </a>
+
+        <a class="ms-card"
+           href="https://azure.microsoft.com/en-us/"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="assets/images/azure.svg" alt="Microsoft Azure" loading="lazy">
+          <div>
+            <h3>Microsoft Azure</h3>
+            <p>Cloud infrastructure, applications, data and AI services.</p>
+          </div>
+        </a>
+
+        <a class="ms-card"
+           href="https://www.microsoft.com/en-za/microsoft-teams/enterprise"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="assets/images/teams.svg" alt="Microsoft Teams" loading="lazy">
+          <div>
+            <h3>Microsoft Teams</h3>
+            <p>Meetings, chat, collaboration and business communications.</p>
+          </div>
+        </a>
+
+        <a class="ms-card"
+           href="https://www.microsoft.com/en-za/microsoft-365-copilot/chat"
+           target="_blank"
+           rel="noopener noreferrer">
+          <img src="assets/images/copilot.svg" alt="Microsoft 365 Copilot" loading="lazy">
+          <div>
+            <h3>Microsoft 365 Copilot</h3>
+            <p>AI assistance across Teams, Outlook, Word, Excel and PowerPoint.</p>
+          </div>
+        </a>
+
+      </div>
+
+      <div id="video-resources" class="video-grid">
+
+        <article class="video-card">
+          <div class="video-title">
+            <span>MICROSOFT AZURE</span>
+            <h3>What is Cloud Computing?</h3>
+          </div>
+
+          <div class="video-frame">
+            <iframe
+              src="https://learn-video.azurefd.net/vod/player?show=learn-azure&ep=what-is-cloud-computing"
+              title="Microsoft Learn - What is Cloud Computing"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <a class="video-link"
+             href="https://learn.microsoft.com/en-us/shows/learn-azure/what-is-cloud-computing"
+             target="_blank"
+             rel="noopener noreferrer">
+            Watch on Microsoft Learn →
+          </a>
+        </article>
+
+        <article class="video-card">
+          <div class="video-title">
+            <span>MICROSOFT AZURE</span>
+            <h3>Azure Cloud & Infrastructure</h3>
+          </div>
+
+          <div class="video-frame">
+            <iframe
+              src="https://learn-video.azurefd.net/vod/player?show=azure-videos&ep=datacenter-overview"
+              title="Microsoft Azure - Datacenter overview"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <a class="video-link"
+             href="https://learn.microsoft.com/en-us/shows/azure-videos/datacenter-overview"
+             target="_blank"
+             rel="noopener noreferrer">
+            Watch on Microsoft Learn →
+          </a>
+        </article>
+
+        <article class="video-card">
+          <div class="video-title">
+            <span>MICROSOFT TEAMS</span>
+            <h3>Introduction to Microsoft Teams</h3>
+          </div>
+
+          <div class="video-frame">
+            <iframe
+              src="https://videos.microsoft.com/discoverteams/watch/Sefa71CK8355JtfKKZ3SC1"
+              title="Microsoft Teams introduction"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <a class="video-link"
+             href="https://videos.microsoft.com/discoverteams/"
+             target="_blank"
+             rel="noopener noreferrer">
+            Watch Microsoft Teams videos →
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+
+  <section id="gallery" class="section alt">
+    <div class="container">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">GALLERY</div>
+          <h2>Technology in focus</h2>
+        </div>
+
+        <p>
+          Explore business voice and collaboration technology from the Mafube
+          ICT Services image library. Select an image to view it full size.
+        </p>
+      </div>
+
+      <div class="gallery">
+
+        <figure class="visual">
+          <a href="assets/images/phone_hero_458x353%20-%20Copy.jpg">
+            <img src="assets/images/phone_hero_458x353%20-%20Copy.jpg"
+                 alt="Business speakerphone for conference calling"
+                 loading="lazy">
+          </a>
+          <figcaption>
+            <span>BUSINESS VOICE</span>
+            <strong>Conference phone</strong>
+          </figcaption>
+        </figure>
+
+        <figure class="visual">
+          <a href="assets/images/ScopiaXT_hero_458x353%20-%20Copy.jpg">
+            <img src="assets/images/ScopiaXT_hero_458x353%20-%20Copy.jpg"
+                 alt="Video conferencing system for meeting rooms"
+                 loading="lazy">
+          </a>
+          <figcaption>
+            <span>VIDEO</span>
+            <strong>Meeting room systems</strong>
+          </figcaption>
+        </figure>
+
+        <figure class="visual">
+          <a href="assets/images/teams.jpg">
+            <img src="assets/images/teams.jpg"
+                 alt="Video collaboration devices for Microsoft Teams"
+                 loading="lazy">
+          </a>
+          <figcaption>
+            <span>COLLABORATION</span>
+            <strong>Video meetings</strong>
+          </figcaption>
+        </figure>
+
+        <figure class="visual">
+          <a href="assets/images/Slide-1-img-121%20-%20Copy.png">
+            <img src="assets/images/Slide-1-img-121%20-%20Copy.png"
+                 alt="Business IP deskphones and telephony interface"
+                 loading="lazy">
+          </a>
+          <figcaption>
+            <span>HOSTED PBX</span>
+            <strong>IP deskphones</strong>
+          </figcaption>
+        </figure>
+
+        <figure class="visual">
+          <a href="assets/images/hybrid.jpg">
+            <img src="assets/images/hybrid.jpg"
+                 alt="Cloud computing services connected to a business network"
+                 loading="lazy">
+          </a>
+          <figcaption>
+            <span>CLOUD</span>
+            <strong>Connected services</strong>
+          </figcaption>
+        </figure>
+
+        <figure class="visual">
+          <a href="assets/images/ScopiaDesktopandMobileApplications_hero_458x353%20-%20Copy.jpg">
+            <img src="assets/images/ScopiaDesktopandMobileApplications_hero_458x353%20-%20Copy.jpg"
+                 alt="Desktop and mobile collaboration applications"
+                 loading="lazy">
+          </a>
+          <figcaption>
+            <span>WORKPLACE</span>
+            <strong>Desktop & mobile</strong>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CALL TO ACTION ================= -->
+
+  <section class="cta">
+    <div class="container cta-inner">
+
+      <div>
+        <div class="eyebrow">LET'S CONNECT</div>
+        <h2>Tell us what your business needs.</h2>
+        <p>We can help you scope a communication, connectivity or IT solution.</p>
+      </div>
+
+      <a class="btn light" href="#contact">Contact Mafube ICT Services</a>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+
+  <section id="contact" class="section contact">
+    <div class="container contact-grid">
+
+      <div>
+        <div class="eyebrow">CONTACT</div>
+        <h2>Start a conversation</h2>
+
+        <p>
+          Tell us what your business needs. Contact Mafube ICT Services
+          directly or send an enquiry using the form.
+        </p>
+
+        <div class="contact-list">
+
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:silas.tseuoa@mafubeservices.co.za">
+              silas.tseuoa@mafubeservices.co.za
+            </a>
+            <a href="mailto:info@mafubeservices.co.za">
+              info@mafubeservices.co.za
+            </a>
+          </div>
+
+          <div>
+            <strong>Telephone</strong>
+            <a href="tel:+27110708666">011 070 8666</a>
+          </div>
+
+          <div>
+            <strong>Mobile</strong>
+            <a href="tel:+27825976262">082 597 6262</a>
+          </div>
+
+          <div>
+            <strong>Address</strong>
+            <span>74 Lyndleigh 11 Kevin Road, Southdale 2091, Gauteng</span>
+          </div>
+
+          <div>
+            <strong>Website</strong>
+            <a href="https://www.mafubeservices.co.za">
+              www.mafubeservices.co.za
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+
+        <label for="contactName">
+          Name
+          <input id="contactName" name="name" autocomplete="name" required>
+        </label>
+
+        <label for="contactCompany">
+          Company <span>(optional)</span>
+          <input id="contactCompany" name="company" autocomplete="organization">
+        </label>
+
+        <label for="contactEmail">
+          Email
+          <input id="contactEmail"
+                 type="email"
+                 name="email"
+                 autocomplete="email"
+                 required>
+        </label>
+
+        <label for="contactMessage">
+          What do you need?
+          <textarea
+            id="contactMessage"
+            name="message"
+            rows="5"
+            required
+            placeholder="Hosted PBX, VoIP, fibre, IT equipment, Microsoft, support..."></textarea>
+        </label>
+
+        <button class="btn primary" type="submit">Send enquiry</button>
+
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+        <small>
+          This form opens your email app with your enquiry addressed to
+          silas.tseuoa@mafubeservices.co.za. Review it and press Send.
+          If no email app opens, email that address directly.
+        </small>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ================= CAREERS ================= -->
+
+  <section id="careers" class="section alt">
+    <div class="container two-col">
+
+      <div>
+        <div class="eyebrow">CAREERS</div>
+        <h2>Careers at Mafube ICT Services</h2>
+
+        <p>
+          For career enquiries, please email the Mafube ICT Services team
+          with a short introduction.
+        </p>
+
+        <a class="btn primary"
+           href="mailto:silas.tseuoa@mafubeservices.co.za?subject=Career%20enquiry">
+          Email a career enquiry
+        </a>
+      </div>
+
+      <div class="about-panel">
+        <div class="mini-icon" aria-hidden="true">M</div>
+        <h3>Interested in working with us?</h3>
+        <p>
+          Use the email link to get in touch about careers.
+          This page does not list current vacancies.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+  <div class="container footer-grid">
+
+    <a class="brand footer-brand" href="index.html">
+      <img class="brand-logo"
+           src="assets/images/logo2.jpg"
+           alt="Mafube ICT Services logo">
+
+      <span>
+        <strong>Mafube ICT</strong>
+        <small>Services</small>
+      </span>
+    </a>
+
+    <p>Information & Communication Technology Services</p>
+
+    <div>
+      <a href="#home">Back to top ↑</a>
+    </div>
+
+  </div>
+
+  <div class="container copyright">
+    © 2026 Mafube ICT Services. All rights reserved.
+    • Registration No. 2007/222145/23
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP ================= -->
+
+<a
+  class="whatsapp"
+  href="https://wa.me/27825976262"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp Mafube ICT Services">
+  WhatsApp
+</a>
+
+<!-- ================= NAVIGATION & CONTACT SCRIPT ================= -->
+
+<script src="script.js"></script>
+
+<script>
+  /*
+   * About dropdown:
+   * Desktop: opens on hover or keyboard focus.
+   * Mobile: toggles when the About link is tapped.
+   */
+  (() => {
+    const dropdown = document.getElementById("aboutDropdown");
+    const toggle = document.getElementById("aboutDropdownToggle");
+
+    if (!dropdown || !toggle) return;
+
+    toggle.addEventListener("click", (event) => {
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        event.preventDefault();
+
+        const isOpen = dropdown.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        dropdown.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
+```

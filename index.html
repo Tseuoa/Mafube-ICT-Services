@@ -161,7 +161,6 @@
 
       </div>
 
-      <a href="#mission-vision">Mission & Vision</a>
       <a href="#services">Services</a>
       <a href="#pabx">Hosted PBX</a>
       <a href="#microsoft">Microsoft</a>
@@ -339,34 +338,6 @@
         </ul>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ================= MISSION & VISION ================= -->
-
-  <section id="mission-vision" class="section alt">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">OUR PURPOSE</div>
-          <h2>Our Vision & Mission</h2>
-        </div>
-        <p>Our commitment to accessible, reliable and business-focused ICT solutions.</p>
-      </div>
-
-      <div class="two-col">
-        <article class="about-panel">
-          <div class="mini-icon" aria-hidden="true">V</div>
-          <h3>Vision</h3>
-          <p>To become a trusted South African ICT solutions partner delivering accessible, reliable and business-focused technology services.</p>
-        </article>
-
-        <article class="about-panel">
-          <div class="mini-icon" aria-hidden="true">M</div>
-          <h3>Mission</h3>
-          <p>To provide quality ICT products, connectivity, communications, cloud and technical services while building long-term relationships with customers, suppliers and technology partners.</p>
-        </article>
-      </div>
     </div>
   </section>
 
@@ -1116,6 +1087,60 @@
     • Registration No. 2007/222145/23
   </div>
 </footer>
+
+<!-- ================= AI QUICK LINKS ================= -->
+<style>
+  .ai-quick-links {
+    position: fixed;
+    right: 20px;
+    bottom: 96px;
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    font-family: Inter, Arial, sans-serif;
+  }
+  .ai-quick-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 112px;
+    min-height: 38px;
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 22px;
+    background: #102b50;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,.22);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .ai-quick-links a:hover,
+  .ai-quick-links a:focus-visible {
+    background: #1b416d;
+    transform: translateX(-3px);
+    outline: 2px solid #7dd3fc;
+    outline-offset: 2px;
+  }
+  .ai-quick-links .copilot { border-left: 4px solid #7c83ff; }
+  .ai-quick-links .chatgpt { border-left: 4px solid #10a37f; }
+  .ai-quick-links .deepseek { border-left: 4px solid #4aa3ff; }
+  .ai-quick-links .claude { border-left: 4px solid #d97745; }
+  @media (max-width: 480px) {
+    .ai-quick-links { right: 12px; bottom: 88px; gap: 6px; }
+    .ai-quick-links a { min-width: 100px; min-height: 34px; padding: 6px 10px; font-size: 12px; }
+  }
+</style>
+
+<div class="ai-quick-links" aria-label="Quick links to AI assistants">
+  <a class="copilot" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Microsoft Copilot">✦ Copilot</a>
+  <a class="chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open ChatGPT">◉ ChatGPT</a>
+  <a class="deepseek" href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" aria-label="Open DeepSeek">✧ DeepSeek</a>
+  <a class="claude" href="https://claude.ai/" target="_blank" rel="noopener noreferrer" aria-label="Open Claude">✳ Claude</a>
+</div>
 
 <!-- ================= WHATSAPP ================= -->
 

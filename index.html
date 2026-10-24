@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <meta name="description" content="Mafube ICT Services provides business ICT solutions, hosted PBX, IP telephony, unified communications, networking, cloud and IT services.">
-  <meta name="theme-color" content="#071a33">
+  <meta name="theme-color" content="#0b4a94">
 
   <title>Mafube ICT Services | Business ICT, Voice & Connectivity</title>
 
@@ -16,93 +16,7 @@
   <link rel="stylesheet" href="styles.css">
 
   <!-- About dropdown styling -->
-  <style>
-    .nav-dropdown {
-      position: relative;
-      display: inline-block;
-    }
 
-    .nav-dropdown-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      padding: 8px;
-      background: #102b50;
-      border: 1px solid #29466b;
-      border-radius: 10px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-      z-index: 2000;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 11px 13px;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-
-    .dropdown-menu a:hover,
-    .dropdown-menu a:focus-visible {
-      background: #1b416d;
-      color: #7dd3fc;
-      outline: none;
-    }
-
-    /* Desktop dropdown */
-    @media (min-width: 1151px) {
-      .nav-dropdown:hover .dropdown-menu,
-      .nav-dropdown:focus-within .dropdown-menu {
-        display: block;
-      }
-    }
-
-    /* Mobile dropdown */
-    @media (max-width: 1150px) {
-      .nav-dropdown {
-        display: block;
-        width: 100%;
-      }
-
-      .nav-dropdown-toggle {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        padding: 12px 14px;
-      }
-
-      .dropdown-menu {
-        position: static;
-        width: 100%;
-        min-width: 0;
-        padding: 5px 8px 5px 18px;
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-        background: transparent;
-      }
-
-      .nav-dropdown.is-open .dropdown-menu {
-        display: block;
-      }
-
-      .dropdown-menu a {
-        white-space: normal;
-      }
-    }
-  </style>
 
 </head>
 
@@ -1174,43 +1088,6 @@
 
 <script src="script.js"></script>
 
-<script>
-  /*
-   * About dropdown:
-   * Desktop: opens on hover or keyboard focus.
-   * Mobile: toggles when the About link is tapped.
-   */
-  (() => {
-    const dropdown = document.getElementById("aboutDropdown");
-    const toggle = document.getElementById("aboutDropdownToggle");
-
-    if (!dropdown || !toggle) return;
-
-    toggle.addEventListener("click", (event) => {
-      if (window.matchMedia("(max-width: 1150px)").matches) {
-        event.preventDefault();
-
-        const isOpen = dropdown.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", String(isOpen));
-      }
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!dropdown.contains(event.target)) {
-        dropdown.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        dropdown.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.focus();
-      }
-    });
-  })();
-</script>
 
 </body>
 </html>

@@ -12,7 +12,7 @@
 .contact{background:#94b2dd}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}.contact-list{display:grid;gap:17px;margin-top:25px}.contact-list strong,.contact-list span,.contact-list a{display:block}.contact-list strong{font-size:.8rem;color:var(--blue);text-transform:uppercase}.contact-list a{color:var(--text)}.contact-form{background:#dceaff;padding:30px;border-radius:var(--radius);display:grid;gap:15px}.contact-form label{font-weight:700;font-size:.9rem}.contact-form input,.contact-form textarea{width:100%;margin-top:6px;border:1px solid #bfd3ef;border-radius:10px;padding:12px;font:inherit;background:#fff}.contact-form textarea{resize:vertical}.contact-form small{color:var(--muted)}.form-status{margin:0;font-weight:700}
 footer{background:#062a55;color:#fff;padding:35px 0 20px}.footer-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:20px;align-items:center}.footer-brand{color:#fff}.footer-grid a{color:#fff}.copyright{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);font-size:.8rem;opacity:.78}.whatsapp{position:fixed;inset-inline-end:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:50;display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:calc(100vw - 40px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));white-space:nowrap;background:#25d366;color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:800;box-shadow:0 10px 25px rgba(0,0,0,.2)}
 @media(max-width:900px){.hero-grid,.two-col,.section-heading,.contact-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.solution-grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}.hero{padding:55px 0}.hero-card,.hero-card img{min-height:330px;height:330px}.stats-grid{grid-template-columns:repeat(2,1fr)}.stats-grid div{border-bottom:1px solid rgba(255,255,255,.15)}}
-@media(max-width:650px){.menu-toggle{display:block}nav{display:none;position:absolute;top:100px;left:0;right:0;background:#eaf2ff;padding:18px 4%;box-shadow:0 15px 30px rgba(6,45,92,.12);flex-direction:column;gap:15px}nav.open{display:flex}h1{font-size:2.6rem}.cards,.solution-grid,.gallery{grid-template-columns:1fr}.visual{height:190px}.section{padding:65px 0}.cta-inner,.footer-grid{display:flex;flex-direction:column;align-items:flex-start}.hero-card,.hero-card img{min-height:280px;height:280px}.whatsapp{inset-inline-end:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))}.stats-grid{grid-template-columns:1fr 1fr}.stats-grid div{padding:10px 15px}footer{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
+@media(max-width:650px){h1{font-size:2.6rem}.cards,.solution-grid,.gallery{grid-template-columns:1fr}.visual{height:190px}.section{padding:65px 0}.cta-inner,.footer-grid{display:flex;flex-direction:column;align-items:flex-start}.hero-card,.hero-card img{min-height:280px;height:280px}.whatsapp{inset-inline-end:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))}.stats-grid{grid-template-columns:1fr 1fr}.stats-grid div{padding:10px 15px}footer{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
 
 /* Microsoft section */
 .microsoft-section{background:linear-gradient(180deg,#88a8d7,#9eb8df)}
@@ -91,19 +91,82 @@ main section[id]{scroll-margin-top:116px}
 .visual figcaption{pointer-events:none}
 .brand-logo{width:42px;height:42px;flex:0 0 42px;object-fit:cover;border-radius:10px}
 .footer-brand .brand-logo{border:1px solid rgba(255,255,255,.2)}
-.bbbee-marquee{overflow:hidden;max-width:100%;white-space:nowrap}
 .visitor-counter{display:flex;align-items:center;gap:7px;margin:0 0 8px;color:var(--muted);font-size:.82rem;font-weight:600}
 .visitor-counter img{width:auto;height:20px}
-.bbbee-marquee span{display:inline-block;min-width:max-content;animation:bbbee-scroll 12s linear infinite}
-@keyframes bbbee-scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 .menu-toggle{border-radius:8px;padding:6px 10px;color:var(--navy);cursor:pointer}
 .menu-toggle:hover{background:#dceaff}
-@media(max-width:650px){nav{border-top:1px solid #e8edf3}.menu-toggle{min-width:44px;min-height:44px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.bbbee-marquee span{animation:none;transform:none}}
-.top-info-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
-.home-banner{width:75%;max-width:100%;margin-inline:auto}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.bbbee-marquee{text-align:right}.bbbee-marquee span{animation:none;transform:none;padding-left:0}}
+.top-info-bar{display:flex;align-items:center;gap:16px;padding-block:14px}
+.home-banner{width:64%;max-width:100%;margin-inline:auto}
 .home-banner img{display:block;width:100%;height:auto}
-.top-info-bar .visitor-counter{margin:0}
-.top-info-bar .bbbee-marquee{max-width:60%;margin:0;white-space:nowrap}
-.top-info-bar .bbbee-marquee span{min-width:max-content;animation:bbbee-scroll 12s linear infinite}
-@media(max-width:650px){.top-info-bar{align-items:flex-start;flex-direction:column;gap:2px;padding-block:10px}.top-info-bar .bbbee-marquee{max-width:100%;text-align:left}}
+.top-info-bar .visitor-counter{margin:0;flex:0 0 auto;white-space:nowrap}
+
+/* ===== Microsoft Solutions Partner badge (top of page, right-aligned) ===== */
+.ms-partner-badge{display:flex;justify-content:flex-end;margin-bottom:8px}
+.ms-partner-badge img{display:block;width:100%;max-width:180px;height:auto;border-radius:2.8%/4.4%}
+
+/* ===== B-BBEE line: scrolls right to left until it reaches the visitor counter ===== */
+.top-info-bar .bbbee-marquee{flex:1 1 0;min-width:0;margin:0;overflow:hidden;white-space:nowrap;text-align:left}
+.bbbee-marquee span{display:inline-block;padding-left:100%;animation:bbbee-scroll 14s linear infinite}
+@keyframes bbbee-scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+/* ===== Responsive refinements ===== */
+body{overflow-x:hidden}
+@supports(overflow:clip){body{overflow-x:clip}}
+iframe,video,svg,canvas{max-width:100%}
+h1,h2,h3,h4,p,li,a,address{overflow-wrap:break-word}
+
+@media(min-width:1600px){.container{width:min(1320px,86%)}}
+
+/* Menu collapses to the hamburger on tablets and below (was 650px, which cut links off on iPads) */
+@media(max-width:1150px){
+ .menu-toggle{display:block;min-width:44px;min-height:44px}
+ nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:8px 4% 16px;background:#eaf2ff;border-top:1px solid #e8edf3;box-shadow:0 15px 30px rgba(6,45,92,.12);max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain}
+ nav.open{display:flex}
+ nav a{padding:12px 4px;font-size:1rem}
+}
+
+@media(max-width:900px){
+ .contact-grid{gap:36px}
+ .stats-grid div:nth-child(2n){border-right:0}
+}
+
+@media(max-width:1100px){.home-banner{width:80%}}
+@media(max-width:768px){.home-banner{width:92%}}
+
+@media(max-width:650px){
+ .home-banner{width:100%}
+ .top-info-bar{flex-direction:column;align-items:stretch;gap:4px;padding-block:10px}
+ .top-info-bar .bbbee-marquee{flex:none;width:100%}
+ .ms-partner-badge img{max-width:140px}
+
+ .nav-wrap{min-height:76px}
+ .site-header .brand-logo{width:56px;height:56px;flex-basis:56px}
+ .site-header .brand strong{font-size:1.2rem}
+ .site-header .brand small{font-size:.85rem}
+ main section[id]{scroll-margin-top:92px}
+
+ .hero{padding:40px 0}
+ .hero-actions .btn{flex:1 1 100%}
+ .hero-card-overlay{left:12px;right:12px;bottom:12px;padding:14px}
+ .trust-row{gap:8px 16px}
+ .about-panel,.contact-form{padding:22px}
+ .card{padding:22px}
+ .solution{padding:22px}
+ .cta{padding:42px 0}
+}
+
+@media(max-width:400px){
+ .site-header .brand-logo{width:48px;height:48px;flex-basis:48px}
+ .site-header .brand strong{font-size:1.05rem}
+ .site-header .brand small{font-size:.78rem}
+ .section{padding:52px 0}
+ h1{font-size:2.2rem}
+ .btn{padding:12px 16px}
+}
+
+/* Landscape phones: a 100px sticky header wastes the screen, so it scrolls away */
+@media(max-height:500px) and (orientation:landscape){
+ .site-header{position:relative}
+ .hero{padding:36px 0}
+}

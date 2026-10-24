@@ -279,3 +279,8 @@ h1,h2,h3,h4,p,li,a,address{overflow-wrap:break-word}
 
 /* Top section uses the same watermark background as the sections below */
 .top-section{background-color:#9ab6df;background-image:url("assets/images/ict-watermark.png");background-repeat:repeat;background-size:560px 560px}
+
+/* Footer uses the same blue as the header */
+footer{background:#0b4a94}
+footer .brand strong{color:#fff}
+footer .brand small{color:#bfe0ff}

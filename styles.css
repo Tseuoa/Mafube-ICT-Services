@@ -173,3 +173,8 @@ h1,h2,h3,h4,p,li,a,address{overflow-wrap:break-word}
 
 /* Desktop: banner keeps its left edge and grows 0.5% to the right */
 @media(min-width:1101px){.home-banner{margin-left:15.5%;margin-right:auto}}
+
+/* Top section (info bar, badge, banner) uses the same navy as the footer */
+.top-section{background:#062a55;padding-bottom:24px}
+.top-section .visitor-counter{color:#fff}
+.top-section .eyebrow{color:#b9ddff}

@@ -62,7 +62,7 @@
     }
 
     /* Desktop dropdown */
-    @media (min-width: 769px) {
+    @media (min-width: 1151px) {
       .nav-dropdown:hover .dropdown-menu,
       .nav-dropdown:focus-within .dropdown-menu {
         display: block;
@@ -70,7 +70,7 @@
     }
 
     /* Mobile dropdown */
-    @media (max-width: 768px) {
+    @media (max-width: 1150px) {
       .nav-dropdown {
         display: block;
         width: 100%;
@@ -102,171 +102,8 @@
         white-space: normal;
       }
     }
-
-    /* Microsoft Solutions Partner badge */
-    .ms-partner-badge {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 0;
-      margin-bottom: 8px;
-    }
-
-    .ms-partner-badge img {
-      display: block;
-      width: 100%;
-      max-width: 180px;
-      height: auto;
-      border-radius: 2.8% / 4.4%;
-    }
-
-    /* B-BBEE line scrolls from far right to far left, stopping at the visitor counter */
-    main .top-info-bar {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    main .top-info-bar .visitor-counter {
-      flex: 0 0 auto;
-      margin: 0;
-      white-space: nowrap;
-    }
-
-    main .top-info-bar .bbbee-marquee {
-      flex: 1 1 0;
-      min-width: 0;
-      margin: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      text-align: left;
-    }
-
-    main .top-info-bar .bbbee-marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: bbbee-scroll 14s linear infinite;
-    }
-
-    @keyframes bbbee-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-100%); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      main .top-info-bar .bbbee-marquee { text-align: right; }
-      main .top-info-bar .bbbee-marquee span {
-        padding-left: 0;
-        animation: none;
-      }
-    }
-
-    /* Home banner at 85% width, centred */
-    main .home-banner img {
-      display: block;
-      width: 85%;
-      max-width: 100%;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
-    }
   </style>
 
-  <!-- Responsive safety net: keeps the layout usable from small phones to large desktops -->
-  <style id="responsive-safety-net">
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-
-    body { overflow-x: hidden; }
-    @supports (overflow: clip) {
-      body { overflow-x: clip; }
-    }
-
-    /* Media never wider than its container */
-    img, video, svg, canvas, iframe { max-width: 100%; }
-    iframe { border: 0; }
-
-    /* Long words, emails and URLs wrap instead of pushing the page wider */
-    h1, h2, h3, h4, p, li, a, address { overflow-wrap: break-word; }
-
-    /* In-page links don't hide headings behind the sticky header */
-    section[id] { scroll-margin-top: 84px; }
-
-    /* Tablets and small laptops: let the desktop menu wrap rather than overflow */
-    @media (min-width: 769px) and (max-width: 1100px) {
-      .nav-wrap { flex-wrap: wrap; row-gap: 8px; }
-      #mainNav { flex-wrap: wrap; row-gap: 4px; }
-    }
-
-    /* Tablets: two-column layouts become one, card grids become two columns */
-    @media (max-width: 900px) {
-      .hero-grid,
-      .two-col,
-      .contact-grid,
-      .footer-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .cards,
-      .solution-grid,
-      .microsoft-grid,
-      .video-grid,
-      .pabx-videos,
-      .pabx-gallery,
-      .gallery,
-      .stats-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    /* Phones */
-    @media (max-width: 768px) {
-      main .home-banner img { width: 100%; }
-
-      input, select, textarea { font-size: 16px; max-width: 100%; }
-
-      .hero-actions { flex-wrap: wrap; }
-    }
-
-    @media (max-width: 600px) {
-      .cards,
-      .solution-grid,
-      .microsoft-grid,
-      .video-grid,
-      .pabx-videos,
-      .pabx-gallery,
-      .gallery {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-      .btn { max-width: 100%; }
-      .hero-actions .btn { flex: 1 1 100%; text-align: center; }
-
-      .ms-partner-badge img { max-width: 140px; }
-    }
-
-    /* Small phones */
-    @media (max-width: 400px) {
-      .stats-grid { grid-template-columns: minmax(0, 1fr); }
-
-      main .top-info-bar { gap: 10px; font-size: 12px; }
-      main .top-info-bar .bbbee-marquee { font-size: 12px; }
-    }
-
-    /* Landscape phones and other short screens: floating AI links go inline at the page end */
-    @media (max-height: 520px) {
-      body .ai-quick-links {
-        position: static;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        padding: 12px;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -1302,9 +1139,12 @@
   .ai-quick-links .chatgpt { border-left: 4px solid #10a37f; }
   .ai-quick-links .deepseek { border-left: 4px solid #4aa3ff; }
   .ai-quick-links .claude { border-left: 4px solid #d97745; }
-  @media (max-width: 480px) {
-    .ai-quick-links { right: 12px; bottom: 88px; gap: 6px; }
-    .ai-quick-links a { min-width: 100px; min-height: 34px; padding: 6px 10px; font-size: 12px; }
+  @media (max-width: 650px) {
+    .ai-quick-links { right: 12px; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); gap: 5px; }
+    .ai-quick-links a { min-width: 0; min-height: 30px; padding: 5px 10px; font-size: 11.5px; }
+  }
+  @media (max-height: 520px) {
+    .ai-quick-links { position: static; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; padding: 12px; }
   }
 </style>
 
@@ -1343,7 +1183,7 @@
     if (!dropdown || !toggle) return;
 
     toggle.addEventListener("click", (event) => {
-      if (window.matchMedia("(max-width: 768px)").matches) {
+      if (window.matchMedia("(max-width: 1150px)").matches) {
         event.preventDefault();
 
         const isOpen = dropdown.classList.toggle("is-open");

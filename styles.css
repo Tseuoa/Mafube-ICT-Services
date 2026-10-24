@@ -276,3 +276,6 @@ h1,h2,h3,h4,p,li,a,address{overflow-wrap:break-word}
 /* Header width is the same on every page, whatever the page's own .container is */
 .site-header .container{width:min(1160px,92%);margin-inline:auto}
 @media(min-width:1600px){.site-header .container{width:min(1320px,86%)}}
+
+/* Top section uses the same watermark background as the sections below */
+.top-section{background-color:#9ab6df;background-image:url("assets/images/ict-watermark.png");background-repeat:repeat;background-size:560px 560px}

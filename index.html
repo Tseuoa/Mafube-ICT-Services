@@ -119,6 +119,47 @@
       border-radius: 2.8% / 4.4%;
     }
 
+    /* B-BBEE line scrolls from far right to far left, stopping at the visitor counter */
+    main .top-info-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    main .top-info-bar .visitor-counter {
+      flex: 0 0 auto;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    main .top-info-bar .bbbee-marquee {
+      flex: 1 1 0;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    main .top-info-bar .bbbee-marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: bbbee-scroll 14s linear infinite;
+    }
+
+    @keyframes bbbee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main .top-info-bar .bbbee-marquee { text-align: right; }
+      main .top-info-bar .bbbee-marquee span {
+        padding-left: 0;
+        animation: none;
+      }
+    }
+
     /* Home banner at 85% width, centred */
     main .home-banner img {
       display: block;

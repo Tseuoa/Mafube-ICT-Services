@@ -178,3 +178,13 @@ h1,h2,h3,h4,p,li,a,address{overflow-wrap:break-word}
 .top-section{background:#062a55;padding-bottom:24px}
 .top-section .visitor-counter{color:#fff}
 .top-section .eyebrow{color:#b9ddff}
+
+/* ===== Blue header ===== */
+.site-header{background:#0b4a94;border-bottom:1px solid #083a75}
+.site-header .brand strong{color:#fff}
+.site-header .brand small{color:#bfe0ff}
+.site-header nav a{color:#fff}
+.site-header nav a:hover{color:#7dd3fc}
+.menu-toggle{color:#fff}
+.menu-toggle:hover{background:rgba(255,255,255,.14)}
+@media(max-width:1150px){nav{background:#0b4a94;border-top:1px solid rgba(255,255,255,.18)}}

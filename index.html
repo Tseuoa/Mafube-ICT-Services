@@ -170,6 +170,103 @@
       margin-right: auto;
     }
   </style>
+
+  <!-- Responsive safety net: keeps the layout usable from small phones to large desktops -->
+  <style id="responsive-safety-net">
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+    body { overflow-x: hidden; }
+    @supports (overflow: clip) {
+      body { overflow-x: clip; }
+    }
+
+    /* Media never wider than its container */
+    img, video, svg, canvas, iframe { max-width: 100%; }
+    iframe { border: 0; }
+
+    /* Long words, emails and URLs wrap instead of pushing the page wider */
+    h1, h2, h3, h4, p, li, a, address { overflow-wrap: break-word; }
+
+    /* In-page links don't hide headings behind the sticky header */
+    section[id] { scroll-margin-top: 84px; }
+
+    /* Tablets and small laptops: let the desktop menu wrap rather than overflow */
+    @media (min-width: 769px) and (max-width: 1100px) {
+      .nav-wrap { flex-wrap: wrap; row-gap: 8px; }
+      #mainNav { flex-wrap: wrap; row-gap: 4px; }
+    }
+
+    /* Tablets: two-column layouts become one, card grids become two columns */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .two-col,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cards,
+      .solution-grid,
+      .microsoft-grid,
+      .video-grid,
+      .pabx-videos,
+      .pabx-gallery,
+      .gallery,
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Phones */
+    @media (max-width: 768px) {
+      main .home-banner img { width: 100%; }
+
+      input, select, textarea { font-size: 16px; max-width: 100%; }
+
+      .hero-actions { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 600px) {
+      .cards,
+      .solution-grid,
+      .microsoft-grid,
+      .video-grid,
+      .pabx-videos,
+      .pabx-gallery,
+      .gallery {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .btn { max-width: 100%; }
+      .hero-actions .btn { flex: 1 1 100%; text-align: center; }
+
+      .ms-partner-badge img { max-width: 140px; }
+    }
+
+    /* Small phones */
+    @media (max-width: 400px) {
+      .stats-grid { grid-template-columns: minmax(0, 1fr); }
+
+      main .top-info-bar { gap: 10px; font-size: 12px; }
+      main .top-info-bar .bbbee-marquee { font-size: 12px; }
+    }
+
+    /* Landscape phones and other short screens: floating AI links go inline at the page end */
+    @media (max-height: 520px) {
+      body .ai-quick-links {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -1273,4 +1370,3 @@
 
 </body>
 </html>
-```

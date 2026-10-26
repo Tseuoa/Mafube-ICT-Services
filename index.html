@@ -17,27 +17,30 @@
 
   <!-- Header branding: keep the full company name on one line -->
   <style>
-    .brand > span {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.3em;
-      white-space: nowrap;
+    /* Force both parts of the header brand to use identical typography. */
+    .site-header .brand .brand-name {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+      gap: 0.3em !important;
+      white-space: nowrap !important;
     }
 
-    .brand > span strong,
-    .brand > span small {
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: 700;
-      line-height: 1.1;
-      margin: 0;
+    .site-header .brand .brand-name strong,
+    .site-header .brand .brand-name small {
+      font-family: Inter, sans-serif !important;
+      font-size: 1.25rem !important;
+      font-weight: 700 !important;
+      line-height: 1.1 !important;
+      margin: 0 !important;
+      letter-spacing: inherit !important;
+      text-transform: none !important;
     }
 
     @media (max-width: 420px) {
-      .brand > span { gap: 0.2em; }
-      /* Keep “Services” exactly the same size as “Mafube ICT” on mobile too. */
-      .brand > span strong,
-      .brand > span small { font-size: inherit; }
+      .site-header .brand .brand-name { gap: 0.2em !important; }
+      .site-header .brand .brand-name strong,
+      .site-header .brand .brand-name small { font-size: 1.1rem !important; }
     }
 
     /* About dropdown styling */

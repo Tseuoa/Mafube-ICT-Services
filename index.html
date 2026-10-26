@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <meta name="description" content="Mafube ICT Services provides business ICT solutions, hosted PBX, IP telephony, unified communications, networking, cloud and IT services.">
-  <meta name="theme-color" content="#0b4a94">
+  <meta name="theme-color" content="#071a33">
 
   <title>Mafube ICT Services | Business ICT, Voice & Connectivity</title>
 
@@ -15,9 +15,119 @@
 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- About dropdown styling -->
+  <!-- Header branding: keep the full company name on one line -->
+  <style>
+    .brand > span {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.3em;
+      white-space: nowrap;
+    }
 
+    .brand > span strong,
+    .brand > span small {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0;
+    }
 
+    @media (max-width: 420px) {
+      .brand > span { gap: 0.2em; }
+      .brand > span strong,
+      .brand > span small { font-size: 0.9em; }
+    }
+
+    /* About dropdown styling */
+  </style>
+  <style>
+    .nav-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      padding: 8px;
+      background: #102b50;
+      border: 1px solid #29466b;
+      border-radius: 10px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      z-index: 2000;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 11px 13px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      background: #1b416d;
+      color: #7dd3fc;
+      outline: none;
+    }
+
+    /* Desktop dropdown */
+    @media (min-width: 769px) {
+      .nav-dropdown:hover .dropdown-menu,
+      .nav-dropdown:focus-within .dropdown-menu {
+        display: block;
+      }
+    }
+
+    /* Mobile dropdown */
+    @media (max-width: 768px) {
+      .nav-dropdown {
+        display: block;
+        width: 100%;
+      }
+
+      .nav-dropdown-toggle {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px 14px;
+      }
+
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        padding: 5px 8px 5px 18px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+      }
+
+      .nav-dropdown.is-open .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu a {
+        white-space: normal;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -35,9 +145,8 @@
         src="assets/images/logo2.jpg"
         alt="Mafube ICT Services logo"
       >
-      <span>
-        <strong>Mafube ICT</strong>
-        <small>Services</small>
+      <span class="brand-name">
+        <strong>Mafube ICT</strong><small>Services</small>
       </span>
     </a>
 
@@ -90,8 +199,6 @@
 
 <main id="main">
 
-  <div class="top-section">
-
   <!-- ================= COMPANY INFORMATION ================= -->
 
   <div class="top-info-bar container" role="group" aria-label="Company information">
@@ -111,15 +218,6 @@
 
   </div>
 
-  <div class="ms-partner-badge container">
-    <img
-      src="assets/images/microsoft.jpg"
-      alt="Microsoft Solutions Partner – Microsoft Cloud"
-      width="693"
-      height="440"
-    >
-  </div>
-
   <!-- ================= HOME BANNER ================= -->
 
   <div class="home-banner">
@@ -130,8 +228,6 @@
       height="983"
       fetchpriority="high"
     >
-  </div>
-
   </div>
 
   <!-- ================= HOME ================= -->
@@ -1016,63 +1112,6 @@
   </div>
 </footer>
 
-<!-- ================= AI QUICK LINKS ================= -->
-<style>
-  .ai-quick-links {
-    position: fixed;
-    right: 20px;
-    bottom: 96px;
-    z-index: 9998;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
-    font-family: Inter, Arial, sans-serif;
-  }
-  .ai-quick-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 112px;
-    min-height: 38px;
-    padding: 8px 13px;
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 22px;
-    background: #102b50;
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(0,0,0,.22);
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: transform .2s ease, background .2s ease;
-  }
-  .ai-quick-links a:hover,
-  .ai-quick-links a:focus-visible {
-    background: #1b416d;
-    transform: translateX(-3px);
-    outline: 2px solid #7dd3fc;
-    outline-offset: 2px;
-  }
-  .ai-quick-links .copilot { border-left: 4px solid #7c83ff; }
-  .ai-quick-links .chatgpt { border-left: 4px solid #10a37f; }
-  .ai-quick-links .deepseek { border-left: 4px solid #4aa3ff; }
-  .ai-quick-links .claude { border-left: 4px solid #d97745; }
-  @media (max-width: 650px) {
-    .ai-quick-links { right: 12px; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); gap: 5px; }
-    .ai-quick-links a { min-width: 0; min-height: 30px; padding: 5px 10px; font-size: 11.5px; }
-  }
-  @media (max-height: 520px) {
-    .ai-quick-links { position: static; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; padding: 12px; }
-  }
-</style>
-
-<div class="ai-quick-links" aria-label="Quick links to AI assistants">
-  <a class="copilot" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Microsoft Copilot">✦ Copilot</a>
-  <a class="chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open ChatGPT">◉ ChatGPT</a>
-  <a class="deepseek" href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" aria-label="Open DeepSeek">✧ DeepSeek</a>
-  <a class="claude" href="https://claude.ai/" target="_blank" rel="noopener noreferrer" aria-label="Open Claude">✳ Claude</a>
-</div>
-
 <!-- ================= WHATSAPP ================= -->
 
 <a
@@ -1088,6 +1127,44 @@
 
 <script src="script.js"></script>
 
+<script>
+  /*
+   * About dropdown:
+   * Desktop: opens on hover or keyboard focus.
+   * Mobile: toggles when the About link is tapped.
+   */
+  (() => {
+    const dropdown = document.getElementById("aboutDropdown");
+    const toggle = document.getElementById("aboutDropdownToggle");
+
+    if (!dropdown || !toggle) return;
+
+    toggle.addEventListener("click", (event) => {
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        event.preventDefault();
+
+        const isOpen = dropdown.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        dropdown.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
+```

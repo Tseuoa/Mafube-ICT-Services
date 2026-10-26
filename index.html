@@ -1128,6 +1128,143 @@
   </div>
 </footer>
 
+<!-- ================= CONNECTOR AI AGENT ================= -->
+<style>
+  .connector-launcher {
+    position: fixed;
+    right: 22px;
+    bottom: 88px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 18px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #153f76, #087fbd);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0,0,0,.24);
+    cursor: pointer;
+  }
+  .connector-launcher:hover { transform: translateY(-2px); }
+  .connector-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    font-size: 17px;
+  }
+  .connector-panel {
+    position: fixed;
+    right: 22px;
+    bottom: 145px;
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+    width: min(350px, calc(100vw - 32px));
+    max-height: min(480px, calc(100vh - 180px));
+    overflow: hidden;
+    border: 1px solid #d8e2ef;
+    border-radius: 18px;
+    background: #fff;
+    color: #172b46;
+    box-shadow: 0 16px 48px rgba(0,0,0,.25);
+    font-family: inherit;
+  }
+  .connector-panel.is-open { display: flex; }
+  .connector-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 15px 17px; color: #fff;
+    background: linear-gradient(135deg, #102c50, #087fbd);
+  }
+  .connector-head strong { display: block; font-size: 16px; }
+  .connector-head small { display: block; margin-top: 3px; opacity: .85; }
+  .connector-close { border: 0; background: transparent; color: #fff; font-size: 24px; cursor: pointer; }
+  .connector-messages { padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+  .connector-message { max-width: 92%; padding: 10px 12px; border-radius: 12px; background: #eef4fa; line-height: 1.45; font-size: 14px; }
+  .connector-message.user { align-self: flex-end; color: #fff; background: #087fbd; }
+  .connector-quick { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 16px 14px; }
+  .connector-quick button { border: 1px solid #cbd9e8; border-radius: 999px; padding: 7px 10px; background: #fff; color: #17416c; cursor: pointer; font: inherit; font-size: 12px; }
+  .connector-quick button:hover { background: #eef6fc; }
+  .connector-note { padding: 10px 15px; border-top: 1px solid #e6edf5; color: #617187; font-size: 11px; }
+  @media (max-width: 480px) {
+    .connector-launcher { right: 14px; bottom: 82px; }
+    .connector-panel { right: 12px; bottom: 137px; }
+  }
+</style>
+
+<button class="connector-launcher" id="connectorLauncher" type="button"
+        aria-expanded="false" aria-controls="connectorPanel">
+  <span class="connector-mark" aria-hidden="true">✦</span>
+  <span>Connector</span>
+</button>
+
+<section class="connector-panel" id="connectorPanel" role="dialog" aria-label="Connector AI assistant" aria-hidden="true">
+  <div class="connector-head">
+    <div><strong>✦ Connector</strong><small>Mafube ICT Services assistant</small></div>
+    <button class="connector-close" id="connectorClose" type="button" aria-label="Close Connector">×</button>
+  </div>
+  <div class="connector-messages" id="connectorMessages" aria-live="polite">
+    <div class="connector-message">Hello! I’m Connector. What can I help you with today?</div>
+  </div>
+  <div class="connector-quick" aria-label="Suggested questions">
+    <button type="button" data-question="Tell me about Hosted PBX and VoIP">Hosted PBX &amp; VoIP</button>
+    <button type="button" data-question="Tell me about Microsoft 365 services">Microsoft 365</button>
+    <button type="button" data-question="I need a connectivity quote">Connectivity quote</button>
+    <button type="button" data-question="How do I contact Mafube ICT Services?">Contact Mafube</button>
+  </div>
+  <div class="connector-note">Preview assistant: connect an AI service to enable open-ended, AI-generated replies.</div>
+</section>
+
+<script>
+  (() => {
+    const launcher = document.getElementById('connectorLauncher');
+    const panel = document.getElementById('connectorPanel');
+    const close = document.getElementById('connectorClose');
+    const messages = document.getElementById('connectorMessages');
+    if (!launcher || !panel || !close || !messages) return;
+
+    function setOpen(open) {
+      panel.classList.toggle('is-open', open);
+      panel.setAttribute('aria-hidden', String(!open));
+      launcher.setAttribute('aria-expanded', String(open));
+      if (open) close.focus(); else launcher.focus();
+    }
+    function addMessage(text, type) {
+      const item = document.createElement('div');
+      item.className = 'connector-message' + (type === 'user' ? ' user' : '');
+      item.textContent = text;
+      messages.appendChild(item);
+      messages.scrollTop = messages.scrollHeight;
+    }
+    function replyTo(question) {
+      addMessage(question, 'user');
+      const q = question.toLowerCase();
+      let reply = 'Thanks for your question. Please contact Mafube ICT Services at silas.tseuoa@mafubeservices.co.za or call 011 070 8666 / 082 597 6262 so our team can assist.';
+      if (q.includes('hosted pbx') || q.includes('voip')) {
+        reply = 'Mafube ICT Services can help with Hosted PBX, VoIP, IP telephony, call routing and contact-centre solutions. Contact us for a solution tailored to your business.';
+      } else if (q.includes('microsoft')) {
+        reply = 'We can assist with Microsoft 365, Teams, cloud productivity and related licensing and support. Contact us to discuss your requirements.';
+      } else if (q.includes('connectivity') || q.includes('quote')) {
+        reply = 'We can discuss fibre, LTE/5G and business connectivity options. Please share your site location and requirements with our team to request a quote.';
+      } else if (q.includes('contact') || q.includes('email') || q.includes('phone')) {
+        reply = 'Email silas.tseuoa@mafubeservices.co.za or call 011 070 8666 / 082 597 6262. You can also use the WhatsApp button below.';
+      }
+      window.setTimeout(() => addMessage(reply, 'assistant'), 250);
+    }
+    launcher.addEventListener('click', () => setOpen(!panel.classList.contains('is-open')));
+    close.addEventListener('click', () => setOpen(false));
+    panel.querySelectorAll('[data-question]').forEach(button => {
+      button.addEventListener('click', () => replyTo(button.getAttribute('data-question')));
+    });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && panel.classList.contains('is-open')) setOpen(false); });
+  })();
+</script>
+
 <!-- ================= WHATSAPP ================= -->
 
 <a

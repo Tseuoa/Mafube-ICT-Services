@@ -1,3 +1,4 @@
+```javascript
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
@@ -28,19 +29,21 @@ Help visitors understand:
 Do not invent prices, stock availability, contract terms,
 certifications, or service availability.
 
-If a visitor requests a quote or a specific commercial commitment,
-ask them to contact Mafube ICT Services.
+For quotes or commercial commitments, direct visitors to Mafube ICT Services.
 
-Contact details:
+Contact:
 Email: silas.tseuoa@mafubeservices.co.za
 Telephone: 011 070 8666
 Mobile: 082 597 6262
 
 Never request passwords, payment-card details, or sensitive personal data.
-If you are unsure, say so honestly and offer the contact details.
+If unsure, say so honestly and provide the contact details above.
 `;
 
 app.disable("x-powered-by");
+
+// Render runs the application behind a proxy.
+app.set("trust proxy", 1);
 
 app.use(helmet());
 
@@ -58,15 +61,12 @@ app.use(cors({
 
 app.use(express.json({ limit: "12kb" }));
 
-app.use(
-  "/api/",
-  rateLimit({
-    windowMs: 60_000,
-    limit: 20,
-    standardHeaders: "draft-8",
-    legacyHeaders: false
-  })
-);
+app.use("/api/", rateLimit({
+  windowMs: 60_000,
+  limit: 20,
+  standardHeaders: "draft-8",
+  legacyHeaders: false
+}));
 
 app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
@@ -77,20 +77,19 @@ app.post("/api/chat", async (req, res) => {
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
+      console.error("Gemini configuration error: GEMINI_API_KEY is missing.");
+
       return res.status(503).json({
         error: "The AI service is not configured yet. Please contact Mafube ICT Services."
       });
     }
 
-    const message =
-      typeof req.body?.message === "string"
-        ? req.body.message.trim()
-        : "";
+    const message = typeof req.body?.message === "string"
+      ? req.body.message.trim()
+      : "";
 
     if (!message) {
-      return res.status(400).json({
-        error: "Please type a message."
-      });
+      return res.status(400).json({ error: "Please type a message." });
     }
 
     if (message.length > 2000) {
@@ -117,12 +116,11 @@ app.post("/api/chat", async (req, res) => {
 
     const contents = [
       ...safeHistory,
-      {
-        role: "user",
-        parts: [{ text: message }]
-      }
+      { role: "user", parts: [{ text: message }] }
     ];
 
+    // Set GEMINI_MODEL in Render if the default is unavailable
+    // for your Google AI Studio project.
     const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 
     const controller = new AbortController();
@@ -132,12 +130,10 @@ app.post("/api/chat", async (req, res) => {
 
     try {
       response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             systemInstruction: {
               parts: [{ text: SYSTEM_INSTRUCTIONS }]
@@ -156,7 +152,13 @@ app.post("/api/chat", async (req, res) => {
     }
 
     if (!response.ok) {
-      console.error("Gemini API request failed with status:", response.status);
+      // Read Google's error response without logging the API key.
+      const errorBody = await response.text();
+      console.error(
+        "Gemini API error:",
+        response.status,
+        errorBody.slice(0, 1000)
+      );
 
       if (response.status === 429) {
         return res.status(429).json({
@@ -191,7 +193,6 @@ app.post("/api/chat", async (req, res) => {
     }
 
     res.set("Cache-Control", "no-store");
-
     return res.json({ reply });
 
   } catch (error) {
@@ -222,6 +223,8 @@ app.use((error, _req, res, _next) => {
     });
   }
 
+  console.error("Unhandled server error:", error?.name || "unknown");
+
   return res.status(500).json({
     error: "Unexpected server error."
   });
@@ -230,3 +233,4 @@ app.use((error, _req, res, _next) => {
 app.listen(port, () => {
   console.log(`Connector API listening on port ${port}`);
 });
+```

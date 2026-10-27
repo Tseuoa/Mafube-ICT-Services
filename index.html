@@ -228,9 +228,6 @@
       >
     </p>
 
-    <p class="eyebrow bbbee-marquee" aria-label="Level 1 B-BBEE ICT Company">
-      <span>LEVEL 1 B-BBEE ICT COMPANY</span>
-    </p>
 
   </div>
 
@@ -244,6 +241,22 @@
       height="983"
       fetchpriority="high"
     >
+  </div>
+
+  <div class="container banner-brand-wrap">
+    <div class="bbbee-brand" aria-label="Company status and Microsoft link">
+      <p class="eyebrow bbbee-marquee" aria-label="Level 1 B-BBEE ICT Company">
+        <span>LEVEL 1 B-BBEE ICT COMPANY</span>
+      </p>
+      <a class="microsoft-shortcut" href="https://www.microsoft.com/" target="_blank" rel="noopener noreferrer" aria-label="Microsoft" title="Microsoft">
+        <svg viewBox="0 0 24 24" role="img" aria-label="Microsoft logo" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="10" height="10" fill="#F25022"/>
+          <rect x="13" y="1" width="10" height="10" fill="#7FBA00"/>
+          <rect x="1" y="13" width="10" height="10" fill="#00A4EF"/>
+          <rect x="13" y="13" width="10" height="10" fill="#FFB900"/>
+        </svg>
+      </a>
+    </div>
   </div>
 
   <!-- ================= HOME ================= -->
@@ -1308,6 +1321,35 @@
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && panel.classList.contains('is-open')) setOpen(false); });
   })();
 </script>
+
+
+<!-- Match the top section background to the middle content sections -->
+<style>
+  /* Use the same soft neutral background across the top section for a seamless look. */
+  body > .site-header,
+  .site-header,
+  .home-banner,
+  .banner-brand-wrap {
+    background-color: #f4f7fb !important;
+  }
+  .home-banner { margin-top: 0; }
+  .banner-brand-wrap { color: inherit; }
+</style>
+
+<!-- Microsoft logo styling: displayed directly below the main banner -->
+<style>
+  .banner-brand-wrap { padding-top: 14px; padding-bottom: 18px; }
+  .bbbee-brand { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .microsoft-shortcut {
+    width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center;
+    background: #fff; border: 1px solid #d8dee8; border-radius: 9px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.14); transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .microsoft-shortcut:hover, .microsoft-shortcut:focus-visible {
+    transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.2);
+  }
+  .microsoft-shortcut svg { width: 26px; height: 26px; display: block; }
+</style>
 
 <!-- ================= WHATSAPP ================= -->
 

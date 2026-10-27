@@ -228,6 +228,9 @@
       >
     </p>
 
+    <p class="eyebrow bbbee-marquee" aria-label="Level 1 B-BBEE ICT Company">
+      <span>LEVEL 1 B-BBEE ICT COMPANY</span>
+    </p>
 
   </div>
 
@@ -241,22 +244,6 @@
       height="983"
       fetchpriority="high"
     >
-  </div>
-
-  <div class="container banner-brand-wrap">
-    <div class="bbbee-brand" aria-label="Company status and Microsoft link">
-      <p class="eyebrow bbbee-marquee" aria-label="Level 1 B-BBEE ICT Company">
-        <span>LEVEL 1 B-BBEE ICT COMPANY</span>
-      </p>
-      <a class="microsoft-shortcut" href="https://www.microsoft.com/" target="_blank" rel="noopener noreferrer" aria-label="Microsoft" title="Microsoft">
-        <svg viewBox="0 0 24 24" role="img" aria-label="Microsoft logo" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="10" height="10" fill="#F25022"/>
-          <rect x="13" y="1" width="10" height="10" fill="#7FBA00"/>
-          <rect x="1" y="13" width="10" height="10" fill="#00A4EF"/>
-          <rect x="13" y="13" width="10" height="10" fill="#FFB900"/>
-        </svg>
-      </a>
-    </div>
   </div>
 
   <!-- ================= HOME ================= -->
@@ -1165,11 +1152,19 @@
   .connector-mark {
     display: inline-grid;
     place-items: center;
-    width: 27px;
-    height: 27px;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    flex: 0 0 32px;
     border-radius: 50%;
-    background: rgba(255,255,255,.18);
-    font-size: 17px;
+    background: #fff;
+    border: 1px solid rgba(255,255,255,.65);
+  }
+  .connector-mark img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .connector-panel {
     position: fixed;
@@ -1194,6 +1189,13 @@
     gap: 12px; padding: 15px 17px; color: #fff;
     background: linear-gradient(135deg, #102c50, #087fbd);
   }
+  .connector-brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+  .connector-logo {
+    display: block; width: 46px; height: 46px; flex: 0 0 46px;
+    object-fit: cover; border-radius: 50%; background: #fff;
+    border: 2px solid rgba(255,255,255,.8);
+    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  }
   .connector-head strong { display: block; font-size: 16px; }
   .connector-head small { display: block; margin-top: 3px; opacity: .85; }
   .connector-close { border: 0; background: transparent; color: #fff; font-size: 24px; cursor: pointer; }
@@ -1204,12 +1206,6 @@
   .connector-quick button { border: 1px solid #cbd9e8; border-radius: 999px; padding: 7px 10px; background: #fff; color: #17416c; cursor: pointer; font: inherit; font-size: 12px; }
   .connector-quick button:hover { background: #eef6fc; }
   .connector-note { padding: 10px 15px; border-top: 1px solid #e6edf5; color: #617187; font-size: 11px; }
-  .connector-composer { display: flex; gap: 8px; align-items: flex-end; padding: 12px; border-top: 1px solid #e6edf5; background: #fff; }
-  .connector-composer textarea { flex: 1; min-width: 0; max-height: 100px; resize: vertical; border: 1px solid #cbd9e8; border-radius: 12px; padding: 11px 12px; color: #172b46; font: inherit; font-size: 14px; line-height: 1.4; outline-offset: 2px; }
-  .connector-composer button { min-height: 42px; border: 0; border-radius: 12px; padding: 0 14px; background: #087fbd; color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
-  .connector-composer button:disabled { opacity: .55; cursor: wait; }
-  .connector-message.pending { color: #617187; font-style: italic; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   @media (max-width: 480px) {
     .connector-launcher { right: 14px; bottom: 82px; }
     .connector-panel { right: 12px; bottom: 137px; }
@@ -1218,17 +1214,20 @@
 
 <button class="connector-launcher" id="connectorLauncher" type="button"
         aria-expanded="false" aria-controls="connectorPanel">
-  <span class="connector-mark" aria-hidden="true">✦</span>
+  <span class="connector-mark" aria-hidden="true"><img src="assets/images/logo2.jpg" alt=""></span>
   <span>Connector</span>
 </button>
 
 <section class="connector-panel" id="connectorPanel" role="dialog" aria-label="Connector AI assistant" aria-hidden="true">
   <div class="connector-head">
-    <div><strong>✦ Connector</strong><small>Mafube ICT Services assistant</small></div>
+    <div class="connector-brand">
+      <img class="connector-logo" src="assets/images/logo2.jpg" alt="Mafube ICT Services logo">
+      <div><strong>Connector</strong><small>Mafube ICT Services assistant</small></div>
+    </div>
     <button class="connector-close" id="connectorClose" type="button" aria-label="Close Connector">×</button>
   </div>
-  <div class="connector-messages" id="connectorMessages" aria-live="polite" aria-relevant="additions">
-    <div class="connector-message">Hello! I’m Connector, Mafube ICT Services’ AI assistant. Type your question below and I’ll do my best to help.</div>
+  <div class="connector-messages" id="connectorMessages" aria-live="polite">
+    <div class="connector-message">Hello! I’m Connector. What can I help you with today?</div>
   </div>
   <div class="connector-quick" aria-label="Suggested questions">
     <button type="button" data-question="Tell me about Hosted PBX and VoIP">Hosted PBX &amp; VoIP</button>
@@ -1236,120 +1235,53 @@
     <button type="button" data-question="I need a connectivity quote">Connectivity quote</button>
     <button type="button" data-question="How do I contact Mafube ICT Services?">Contact Mafube</button>
   </div>
-  <form class="connector-composer" id="connectorForm">
-    <label class="sr-only" for="connectorInput">Type your message to Connector</label>
-    <textarea id="connectorInput" name="message" rows="1" maxlength="2000" placeholder="Type your question…" required></textarea>
-    <button id="connectorSend" type="submit" aria-label="Send message">Send</button>
-  </form>
-  <div class="connector-note" id="connectorStatus">AI assistant • Please don’t share passwords or sensitive personal information.</div>
+  <div class="connector-note">Preview assistant: connect an AI service to enable open-ended, AI-generated replies.</div>
 </section>
 
 <script>
   (() => {
-    // After deploying the backend, replace this URL with your HTTPS API endpoint.
-    // Example: https://mafube-connector-api.example.com/api/chat
-    const CONNECTOR_API_URL = 'https://mafube-ict-services.onrender.com/api/chat';
     const launcher = document.getElementById('connectorLauncher');
     const panel = document.getElementById('connectorPanel');
     const close = document.getElementById('connectorClose');
     const messages = document.getElementById('connectorMessages');
-    const form = document.getElementById('connectorForm');
-    const input = document.getElementById('connectorInput');
-    const send = document.getElementById('connectorSend');
-    const status = document.getElementById('connectorStatus');
-    if (!launcher || !panel || !close || !messages || !form || !input || !send || !status) return;
-    const history = [];
-    let busy = false;
+    if (!launcher || !panel || !close || !messages) return;
 
     function setOpen(open) {
       panel.classList.toggle('is-open', open);
       panel.setAttribute('aria-hidden', String(!open));
       launcher.setAttribute('aria-expanded', String(open));
-      if (open) window.setTimeout(() => input.focus(), 0); else launcher.focus();
+      if (open) close.focus(); else launcher.focus();
     }
-    function addMessage(text, type, extraClass) {
+    function addMessage(text, type) {
       const item = document.createElement('div');
-      item.className = 'connector-message' + (type === 'user' ? ' user' : '') + (extraClass ? ' ' + extraClass : '');
+      item.className = 'connector-message' + (type === 'user' ? ' user' : '');
       item.textContent = text;
       messages.appendChild(item);
       messages.scrollTop = messages.scrollHeight;
-      return item;
     }
-    async function sendMessage(rawText) {
-      const message = String(rawText || '').trim();
-      if (!message || busy) return;
-      if (message.length > 2000) { addMessage('Please keep your message under 2,000 characters.', 'assistant'); return; }
-      addMessage(message, 'user');
-      input.value = '';
-      busy = true; send.disabled = true; input.disabled = true;
-      status.textContent = 'Connector is thinking…';
-      const pending = addMessage('Preparing a reply…', 'assistant', 'pending');
-      try {
-        if (CONNECTOR_API_URL.includes('YOUR-CONNECTOR-BACKEND-DOMAIN')) {
-          throw new Error('Connector’s secure backend has not been configured yet. Please contact Mafube ICT Services at silas.tseuoa@mafubeservices.co.za.');
-        }
-        const response = await fetch(CONNECTOR_API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message, history: history.slice(-10) })
-        });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error || 'Connector could not reply right now. Please try again shortly.');
-        if (!data.reply || typeof data.reply !== 'string') throw new Error('Connector returned an empty response. Please try again.');
-        pending.remove();
-        addMessage(data.reply, 'assistant');
-        history.push({ role: 'user', content: message }, { role: 'assistant', content: data.reply });
-        if (history.length > 12) history.splice(0, history.length - 12);
-        status.textContent = 'AI assistant • Avoid sharing passwords or sensitive personal information.';
-      } catch (error) {
-        pending.remove();
-        addMessage(error.message || 'Connection failed. Please try again.', 'assistant');
-        status.textContent = 'Connection issue • You can contact Mafube ICT Services directly.';
-      } finally {
-        busy = false; send.disabled = false; input.disabled = false; input.focus();
+    function replyTo(question) {
+      addMessage(question, 'user');
+      const q = question.toLowerCase();
+      let reply = 'Thanks for your question. Please contact Mafube ICT Services at silas.tseuoa@mafubeservices.co.za or call 011 070 8666 / 082 597 6262 so our team can assist.';
+      if (q.includes('hosted pbx') || q.includes('voip')) {
+        reply = 'Mafube ICT Services can help with Hosted PBX, VoIP, IP telephony, call routing and contact-centre solutions. Contact us for a solution tailored to your business.';
+      } else if (q.includes('microsoft')) {
+        reply = 'We can assist with Microsoft 365, Teams, cloud productivity and related licensing and support. Contact us to discuss your requirements.';
+      } else if (q.includes('connectivity') || q.includes('quote')) {
+        reply = 'We can discuss fibre, LTE/5G and business connectivity options. Please share your site location and requirements with our team to request a quote.';
+      } else if (q.includes('contact') || q.includes('email') || q.includes('phone')) {
+        reply = 'Email silas.tseuoa@mafubeservices.co.za or call 011 070 8666 / 082 597 6262. You can also use the WhatsApp button below.';
       }
+      window.setTimeout(() => addMessage(reply, 'assistant'), 250);
     }
     launcher.addEventListener('click', () => setOpen(!panel.classList.contains('is-open')));
     close.addEventListener('click', () => setOpen(false));
-    form.addEventListener('submit', event => { event.preventDefault(); sendMessage(input.value); });
-    input.addEventListener('keydown', event => {
-      if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); form.requestSubmit(); }
-    });
     panel.querySelectorAll('[data-question]').forEach(button => {
-      button.addEventListener('click', () => sendMessage(button.getAttribute('data-question')));
+      button.addEventListener('click', () => replyTo(button.getAttribute('data-question')));
     });
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && panel.classList.contains('is-open')) setOpen(false); });
   })();
 </script>
-
-
-<!-- Match the top section background to the middle content sections -->
-<style>
-  /* Use the same soft neutral background across the top section for a seamless look. */
-  body > .site-header,
-  .site-header,
-  .home-banner,
-  .banner-brand-wrap {
-    background-color: #f4f7fb !important;
-  }
-  .home-banner { margin-top: 0; }
-  .banner-brand-wrap { color: inherit; }
-</style>
-
-<!-- Microsoft logo styling: displayed directly below the main banner -->
-<style>
-  .banner-brand-wrap { padding-top: 14px; padding-bottom: 18px; }
-  .bbbee-brand { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .microsoft-shortcut {
-    width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center;
-    background: #fff; border: 1px solid #d8dee8; border-radius: 9px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.14); transition: transform .2s ease, box-shadow .2s ease;
-  }
-  .microsoft-shortcut:hover, .microsoft-shortcut:focus-visible {
-    transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.2);
-  }
-  .microsoft-shortcut svg { width: 26px; height: 26px; display: block; }
-</style>
 
 <!-- ================= WHATSAPP ================= -->
 

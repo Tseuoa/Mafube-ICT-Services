@@ -2,7 +2,7 @@
 <html lang="en-ZA"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Our Values of Mafube ICT Services, a South African ICT solutions provider.">
-<meta name="theme-color" content="#0b4a94"><title>Our Values | Mafube ICT Services</title>
+<meta name="theme-color" content="#071a33"><title>Our Values | Mafube ICT Services</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css"><style>
@@ -10,12 +10,17 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);line-height:1.7;background:#fff}
 a{color:inherit}
+.site-header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #071a3320}
+.nav-wrap{max-width:1120px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.brand-logo{width:48px;height:48px;object-fit:contain;border-radius:8px}
+.brand strong,.brand small{display:block;line-height:1.2}.brand small{font-size:.85rem;color:#b9d5f2;margin-top:4px}
+nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:#fff;text-decoration:none;font-size:.93rem}nav a:hover,nav a:focus{color:var(--sky)}
 .container{width:min(100% - 40px,1000px);margin:auto}
 .hero{background:linear-gradient(135deg,#071a33,#12365f);color:#fff;padding:72px 0 66px}
 .eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0b78a5}
 .hero .eyebrow{color:var(--sky)}
 h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.1;margin:12px 0 18px;letter-spacing:-.035em}
-.hero h1{color:#fff}
 .lead{font-size:1.15rem;max-width:760px;color:#d9e8f8}
 .content{padding:48px 0 64px}
 .panel{background:var(--pale);border:1px solid #e0e8f1;border-radius:18px;padding:clamp(22px,4vw,38px);margin-bottom:22px}
@@ -27,72 +32,24 @@ ul{padding-left:22px;margin:10px 0 0}li{margin:7px 0}
 .card{background:#fff;border:1px solid #e0e8f1;border-radius:14px;padding:22px}
 .card .symbol{font-size:1.6rem;color:#087ca5;margin-bottom:8px}
 .btn{display:inline-block;padding:11px 17px;border-radius:9px;background:var(--sky);color:var(--navy);font-weight:800;text-decoration:none;margin-top:8px}
-footer{background:#0b4a94;color:#d7e4f3;padding:24px 0;font-size:.9rem}
+footer{background:var(--navy);color:#d7e4f3;padding:24px 0;font-size:.9rem}
 footer a{color:var(--sky);text-decoration:none}
-@media(max-width:700px){.cards{grid-template-columns:1fr}.hero{padding:52px 0}}
+@media(max-width:700px){.nav-wrap{align-items:flex-start;flex-direction:column}nav{gap:12px 16px}.cards{grid-template-columns:1fr}.hero{padding:52px 0}}
+
+.home-nav-link{font-weight:800!important;text-decoration:underline;text-underline-offset:4px}
+.home-nav-link:focus-visible{outline:2px solid var(--sky);outline-offset:4px}
 </style></head><body>
 
-<header class="site-header">
-  <div class="container nav-wrap">
-
-    <a class="brand" href="index.html" aria-label="Mafube ICT Services home">
-      <img
-        class="brand-logo"
-        src="assets/images/logo2.jpg"
-        alt="Mafube ICT Services logo"
-      >
-      <span>
-        <strong>Mafube ICT</strong>
-        <small>Services</small>
-      </span>
-    </a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-controls="mainNav"
-      aria-expanded="false"
-    >
-      ☰
-    </button>
-
-    <nav id="mainNav" aria-label="Main navigation">
-
-      <!-- ABOUT DROPDOWN -->
-      <div class="nav-dropdown" id="aboutDropdown">
-
-        <a
-          href="index.html#about"
-          class="nav-dropdown-toggle"
-          id="aboutDropdownToggle"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          About <span aria-hidden="true">▾</span>
-        </a>
-
-        <div class="dropdown-menu" aria-label="About pages">
-          <a href="index.html#about">About Us</a>
-          <a href="mission.html">Mission</a>
-          <a href="vision.html">Vision</a>
-          <a href="values.html" aria-current="page">Values</a>
-          <a href="executive.html">Executive</a>
-        </div>
-
-      </div>
-
-      <a href="index.html#services">Services</a>
-      <a href="index.html#pabx">Hosted PBX</a>
-      <a href="index.html#microsoft">Microsoft</a>
-      <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#video-resources">Videos</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="index.html#careers">Careers</a>
-
-    </nav>
-  </div>
-</header>
+<header class="site-header"><div class="nav-wrap">
+<a class="brand" href="index.html" aria-label="Mafube ICT Services home">
+<img class="brand-logo" src="assets/images/logo2.jpg" alt="Mafube ICT Services logo">
+<span><strong>Mafube ICT</strong><small>Services</small></span></a>
+<nav aria-label="Main navigation">
+<a href="index.html#home" class="home-nav-link" aria-label="Go to homepage">Home</a><a href="index.html#about">About</a>
+<a href="mission.html">Mission</a><a href="vision.html">Vision</a>
+<a href="values.html">Values</a><a href="executive.html">Executive</a>
+<a href="index.html#services">Services</a><a href="index.html#contact">Contact</a>
+</nav></div></header>
 
 <main><section class="hero"><div class="container"><div class="eyebrow">OUR VALUES</div>
 <h1>The principles behind every customer relationship.</h1><p class="lead">Our values guide how Mafube ICT Services works with customers, suppliers, partners and the wider business community.</p></div></section>
@@ -114,5 +71,4 @@ footer a{color:var(--sky);text-decoration:none}
 <a href="https://www.mafubeservices.co.za">www.mafubeservices.co.za</a></p>
 <p style="margin:8px 0 0">© 2026 Mafube ICT Services. Registration No. 2007/222145/23.</p>
 </div></footer>
-<script src="script.js"></script>
 </body></html>

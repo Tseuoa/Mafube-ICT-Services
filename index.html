@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <meta name="description" content="Mafube ICT Services provides business ICT solutions, hosted PBX, IP telephony, unified communications, networking, cloud and IT services.">
+  <meta name="description" content="Mafube ICT Services Business Hub for ICT products, hosted PBX, connectivity, Microsoft cloud, AI business tools, websites, training and managed IT support.">
   <meta name="theme-color" content="#071a33">
 
   <title>Mafube ICT Services | Business ICT, Voice & Connectivity</title>
@@ -56,7 +56,12 @@
     }
 
     /* About dropdown styling */
-  </style>
+  
+    /* Persistent navigation and a clear Home shortcut on every page. */
+    .site-header { position: sticky !important; top: 0; z-index: 1000; }
+    .home-nav-link { font-weight: 800 !important; }
+    .home-nav-link:focus-visible, .home-nav-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+</style>
   <style>
     .nav-dropdown {
       position: relative;
@@ -177,6 +182,7 @@
     </button>
 
     <nav id="mainNav" aria-label="Main navigation">
+      <a href="index.html#home" class="home-nav-link" aria-label="Go to homepage">Home</a>
 
       <!-- ABOUT DROPDOWN -->
       <div class="nav-dropdown" id="aboutDropdown">
@@ -201,6 +207,7 @@
 
       </div>
 
+      <a href="#business-hub">Business Hub</a>
       <a href="#services">Services</a>
       <a href="#pabx">Hosted PBX</a>
       <a href="#microsoft">Microsoft</a>
@@ -858,6 +865,167 @@
 
   <!-- ================= GALLERY ================= -->
 
+
+  <!-- ================= MAFUBE BUSINESS HUB ================= -->
+  <style>
+    :root { --hub-navy:#071a33; --hub-blue:#087fbd; --hub-sky:#eaf5fc; --hub-line:#d8e5f1; }
+    .hub-section { padding: clamp(52px, 7vw, 88px) 0; background: linear-gradient(180deg,#f4f9fd 0%,#ffffff 100%); color:#14263e; }
+    .hub-section.hub-dark { background: linear-gradient(135deg,#071a33 0%,#103d68 100%); color:#fff; }
+    .hub-heading { max-width:820px; margin:0 auto 34px; text-align:center; }
+    .hub-heading .eyebrow { color:#087fbd; font-weight:800; letter-spacing:.12em; }
+    .hub-dark .hub-heading .eyebrow { color:#8bd8ff; }
+    .hub-heading h2 { font-size:clamp(2rem,4vw,3rem); line-height:1.1; margin:12px 0; }
+    .hub-heading p { font-size:1.05rem; line-height:1.75; opacity:.88; }
+    .hub-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .hub-card { display:flex; flex-direction:column; padding:24px; border:1px solid var(--hub-line); border-radius:18px; background:#fff; box-shadow:0 10px 28px rgba(7,26,51,.06); color:#14263e; min-width:0; }
+    .hub-card .hub-icon { display:grid; place-items:center; width:48px; height:48px; border-radius:14px; background:var(--hub-sky); font-size:24px; margin-bottom:14px; }
+    .hub-card h3 { margin:0 0 9px; font-size:1.2rem; }
+    .hub-card p { line-height:1.65; margin:0 0 14px; color:#52647a; }
+    .hub-card ul { margin:0 0 20px; padding-left:19px; color:#52647a; line-height:1.8; }
+    .hub-card .btn { align-self:flex-start; margin-top:auto; }
+    .hub-dark .hub-card { border-color:rgba(255,255,255,.16); }
+    .hub-kicker { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(8,127,189,.22); border-radius:999px; padding:7px 12px; background:#fff; color:#16416a; font-weight:700; font-size:.88rem; }
+    .hub-hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:30px; align-items:center; }
+    .hub-hero-copy h2 { font-size:clamp(2.3rem,5vw,4rem); line-height:1.03; margin:18px 0; }
+    .hub-hero-copy h2 span { color:#75d4ff; }
+    .hub-hero-copy p { line-height:1.8; font-size:1.08rem; max-width:720px; color:#e0ebf7; }
+    .hub-hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    .hub-feature-panel { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:22px; padding:24px; }
+    .hub-feature-panel h3 { margin:0 0 14px; }
+    .hub-feature-list { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .hub-feature-list span { padding:12px; border-radius:12px; background:rgba(255,255,255,.09); font-weight:600; }
+    .hub-products { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .hub-product { border:1px solid var(--hub-line); border-radius:16px; padding:18px; background:#fff; }
+    .hub-product .hub-icon { font-size:27px; }
+    .hub-product h3 { margin:8px 0; font-size:1.05rem; }
+    .hub-product p { color:#52647a; line-height:1.55; font-size:.94rem; }
+    .hub-product a { font-weight:800; color:#087fbd; text-decoration:none; }
+    .hub-pricing { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; align-items:stretch; }
+    .hub-price-card { border-radius:18px; padding:24px; border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.08); display:flex; flex-direction:column; }
+    .hub-price-card.featured { background:#fff; color:#14263e; border-color:#fff; transform:translateY(-6px); }
+    .hub-price-card p { line-height:1.65; opacity:.88; }
+    .hub-price { font-size:2rem; font-weight:800; margin:10px 0 4px; }
+    .hub-price small { font-size:.9rem; font-weight:500; }
+    .hub-price-card ul { padding-left:18px; line-height:1.8; flex:1; }
+    .hub-price-card .btn { margin-top:14px; }
+    .hub-note { font-size:.88rem; opacity:.8; line-height:1.6; margin-top:18px; }
+    .hub-form-wrap { display:grid; grid-template-columns:.8fr 1.2fr; gap:28px; align-items:start; }
+    .hub-contact-panel { border-radius:20px; background:#0b2b4d; color:#fff; padding:25px; }
+    .hub-contact-panel p { line-height:1.75; color:#d8e7f5; }
+    .hub-form { display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:24px; border:1px solid var(--hub-line); border-radius:20px; background:#fff; box-shadow:0 10px 28px rgba(7,26,51,.06); }
+    .hub-form label { display:flex; flex-direction:column; gap:7px; font-weight:700; font-size:.92rem; color:#203752; }
+    .hub-form input,.hub-form select,.hub-form textarea { width:100%; border:1px solid #cbd9e8; border-radius:10px; padding:12px; font:inherit; background:#fff; color:#14263e; }
+    .hub-form textarea { min-height:112px; resize:vertical; }
+    .hub-form .full { grid-column:1/-1; }
+    .hub-form .btn { justify-self:start; }
+    .hub-status { grid-column:1/-1; font-size:.9rem; color:#087044; }
+    .hub-pill-row { display:flex; flex-wrap:wrap; gap:9px; justify-content:center; margin-top:20px; }
+    .hub-pill-row span { border-radius:999px; padding:8px 12px; background:#eaf5fc; color:#16416a; font-size:.88rem; font-weight:700; }
+    @media(max-width:950px) { .hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-pricing{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-products{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-hero-grid,.hub-form-wrap{grid-template-columns:1fr} }
+    @media(max-width:600px) { .hub-grid,.hub-pricing,.hub-products{grid-template-columns:1fr}.hub-form{grid-template-columns:1fr}.hub-form .full{grid-column:auto}.hub-feature-list{grid-template-columns:1fr 1fr}.hub-price-card.featured{transform:none}.hub-card{padding:20px} }
+  </style>
+
+  <section id="business-hub" class="hub-section hub-dark">
+    <div class="container hub-hero-grid">
+      <div class="hub-hero-copy">
+        <span class="hub-kicker">MAFUBE ICT SERVICES · BUSINESS HUB</span>
+        <h2>One partner for your <span>business technology.</span></h2>
+        <p>Discover ICT equipment, business communications, connectivity, AI tools and digital business services from one place. Start with a quote or consultation; our team will confirm availability, pricing and the right solution for your organisation.</p>
+        <div class="hub-hero-actions">
+          <a class="btn primary" href="#hub-enquiry">Request a quote</a>
+          <a class="btn ghost" href="#hub-services">Explore the platform</a>
+        </div>
+        <div class="hub-pill-row" style="justify-content:flex-start">
+          <span>ICT Products</span><span>Hosted PBX</span><span>Microsoft & Cloud</span><span>AI & Automation</span>
+        </div>
+      </div>
+      <div class="hub-feature-panel">
+        <h3>Your business technology toolkit</h3>
+        <div class="hub-feature-list">
+          <span>🛒 Product marketplace</span><span>☎️ Cloud telephony</span>
+          <span>🤖 AI assistant</span><span>📋 Tender tracking</span>
+          <span>🎓 IT learning</span><span>🧰 IT support</span>
+          <span>🌐 Website services</span><span>💬 WhatsApp sales</span>
+        </div>
+        <p class="hub-note">Service availability, product stock, subscriptions and final pricing are confirmed by Mafube before an order is accepted.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hub-services" class="hub-section">
+    <div class="container">
+      <div class="hub-heading">
+        <div class="eyebrow">DIGITAL SERVICES</div>
+        <h2>Explore Mafube Business Hub</h2>
+        <p>A single starting point for small businesses, ICT teams and organisations looking to buy, connect, automate and support their technology.</p>
+      </div>
+      <div class="hub-grid">
+        <article class="hub-card"><div class="hub-icon">🤖</div><h3>Mafube AI Business Assistant</h3><p>AI-assisted business workflows designed to save time and help teams respond faster.</p><ul><li>Draft emails and business documents</li><li>Assist with quotation preparation</li><li>Summarise uploaded or supplied content</li><li>Support customer service workflows</li></ul><a class="btn primary" href="#hub-enquiry" data-service="AI Business Assistant">Discuss AI services</a></article>
+        <article class="hub-card"><div class="hub-icon">🛒</div><h3>Online IT Store</h3><p>Request pricing for business IT equipment and technology products sourced through suppliers.</p><ul><li>Laptops, desktops and monitors</li><li>Headsets, docks and accessories</li><li>Networking equipment</li><li>Software and cloud licensing enquiries</li></ul><a class="btn primary" href="#hub-products">Browse catalogue</a></article>
+        <article class="hub-card"><div class="hub-icon">☎️</div><h3>Hosted PBX & VoIP</h3><p>Business telephony and collaboration solutions tailored to your teams and locations.</p><ul><li>Hosted PBX and IP phones</li><li>Call queues and IVR</li><li>Contact-centre enquiries</li><li>Microsoft Teams calling options</li></ul><a class="btn primary" href="#hub-enquiry" data-service="Hosted PBX and VoIP">Get a PBX quote</a></article>
+        <article class="hub-card"><div class="hub-icon">📋</div><h3>Tender & Supplier Desk</h3><p>Tools and assistance to organise tender opportunities and prepare submission checklists.</p><ul><li>Opportunity tracking</li><li>Deadline and document reminders</li><li>AI-assisted document summaries</li><li>Submission planning checklists</li></ul><a class="btn primary" href="#hub-enquiry" data-service="Tender and Supplier Desk">Enquire about tender support</a></article>
+        <article class="hub-card"><div class="hub-icon">🌐</div><h3>Website Builder & Digital Presence</h3><p>Website creation, hosting coordination and maintenance support for small businesses.</p><ul><li>Mobile-friendly business websites</li><li>Domain and email setup assistance</li><li>Contact forms and WhatsApp links</li><li>Content updates and maintenance</li></ul><a class="btn primary" href="#hub-enquiry" data-service="Website and Digital Presence">Start a website project</a></article>
+        <article class="hub-card"><div class="hub-icon">🎓</div><h3>IT Learning & Skills</h3><p>Practical learning and coaching enquiries for business productivity and IT skills.</p><ul><li>Microsoft 365 and Teams</li><li>Cloud and cybersecurity fundamentals</li><li>AI productivity workshops</li><li>CV and interview preparation enquiries</li></ul><a class="btn primary" href="#hub-enquiry" data-service="IT Learning and Skills">Ask about training</a></article>
+        <article class="hub-card"><div class="hub-icon">💬</div><h3>WhatsApp Sales Assistant</h3><p>Explore customer messaging and sales workflows using approved business messaging integrations.</p><ul><li>Customer enquiries and lead capture</li><li>Product and service FAQs</li><li>Quote request handover</li><li>Follow-up and team notifications</li></ul><a class="btn primary" href="#hub-enquiry" data-service="WhatsApp Sales Assistant">Discuss automation</a></article>
+        <article class="hub-card"><div class="hub-icon">🧰</div><h3>Managed IT & Support</h3><p>Helpdesk and ongoing support options for business users, devices and cloud services.</p><ul><li>Microsoft 365 administration</li><li>IT support and troubleshooting</li><li>Device setup and configuration</li><li>Maintenance and support plans</li></ul><a class="btn primary" href="#hub-enquiry" data-service="Managed IT and Support">Request support</a></article>
+        <article class="hub-card"><div class="hub-icon">☁️</div><h3>Microsoft & Cloud Solutions</h3><p>Discuss licensing and deployment for productivity, collaboration and cloud services.</p><ul><li>Microsoft 365 licensing enquiries</li><li>Teams and collaboration</li><li>Cloud readiness and configuration</li><li>Security and administration support</li></ul><a class="btn primary" href="#hub-enquiry" data-service="Microsoft and Cloud Solutions">Discuss Microsoft services</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="hub-products" class="section">
+    <div class="container">
+      <div class="hub-heading">
+        <div class="eyebrow">PRODUCT CATALOGUE</div><h2>IT equipment & business technology</h2>
+        <p>Use the catalogue to tell us what you need. This is a request-for-quotation catalogue, not a live stock or checkout system; supplier availability and final prices must be confirmed.</p>
+      </div>
+      <div class="hub-products">
+        <article class="hub-product"><div class="hub-icon">💻</div><h3>Laptops & desktops</h3><p>Business computers, accessories, warranty and deployment enquiries.</p><a href="#hub-enquiry" data-service="Laptops and desktops">Request pricing →</a></article>
+        <article class="hub-product"><div class="hub-icon">🖥️</div><h3>Monitors & docking</h3><p>Displays, docking stations, adapters and workstation accessories.</p><a href="#hub-enquiry" data-service="Monitors and docking stations">Request pricing →</a></article>
+        <article class="hub-product"><div class="hub-icon">🎧</div><h3>Headsets & accessories</h3><p>Business headsets, keyboards, mice, bags and connectivity accessories.</p><a href="#hub-enquiry" data-service="Headsets and IT accessories">Request pricing →</a></article>
+        <article class="hub-product"><div class="hub-icon">☎️</div><h3>Yealink & IP phones</h3><p>IP handsets and hosted PBX endpoint enquiries for business teams.</p><a href="#hub-enquiry" data-service="Yealink phones and IP telephony">Request pricing →</a></article>
+        <article class="hub-product"><div class="hub-icon">📡</div><h3>Networking</h3><p>Routers, switches, Wi-Fi and network accessories.</p><a href="#hub-enquiry" data-service="Networking equipment">Request pricing →</a></article>
+        <article class="hub-product"><div class="hub-icon">🖨️</div><h3>Printers & supplies</h3><p>Printing equipment, toner, consumables and related accessories.</p><a href="#hub-enquiry" data-service="Printers and supplies">Request pricing →</a></article>
+        <article class="hub-product"><div class="hub-icon">🔐</div><h3>Software & licences</h3><p>Microsoft and other business software licensing enquiries.</p><a href="#hub-enquiry" data-service="Software and licences">Request pricing →</a></article>
+        <article class="hub-product"><div class="hub-icon">📶</div><h3>Fibre & LTE/5G</h3><p>Business connectivity checks and suitable service enquiries.</p><a href="#hub-enquiry" data-service="Fibre and LTE/5G connectivity">Check availability →</a></article>
+      </div>
+      <div class="hub-hero-actions" style="justify-content:center;margin-top:26px"><a class="btn primary" href="#hub-enquiry" data-service="IT product catalogue quotation">Request a consolidated quote</a></div>
+    </div>
+  </section>
+
+  <section id="hub-plans" class="hub-section hub-dark">
+    <div class="container">
+      <div class="hub-heading"><div class="eyebrow">INDICATIVE SUBSCRIPTION CONCEPTS</div><h2>Simple plans for growing businesses</h2><p>These are proposed price points for validating demand. They are not active subscriptions or an offer to purchase until scope, usage limits, support and service availability are confirmed in writing.</p></div>
+      <div class="hub-pricing">
+        <article class="hub-price-card"><h3>Starter</h3><div class="hub-price">R199 <small>/ month*</small></div><p>For a small business exploring digital tools.</p><ul><li>Basic business tool enquiries</li><li>Guided setup consultation</li><li>Email support enquiry</li></ul><a class="btn ghost" href="#hub-enquiry" data-service="Starter plan enquiry">Register interest</a></article>
+        <article class="hub-price-card featured"><h3>Professional</h3><div class="hub-price">R499 <small>/ month*</small></div><p>For a growing team that needs connected workflows.</p><ul><li>AI workflow consultation</li><li>CRM and quote workflow planning</li><li>Business support options</li></ul><a class="btn primary" href="#hub-enquiry" data-service="Professional plan enquiry">Register interest</a></article>
+        <article class="hub-price-card"><h3>Business</h3><div class="hub-price">R999 <small>/ month*</small></div><p>For businesses considering more automation.</p><ul><li>Multi-user workflow planning</li><li>Messaging integration consultation</li><li>Reporting and support options</li></ul><a class="btn ghost" href="#hub-enquiry" data-service="Business plan enquiry">Register interest</a></article>
+        <article class="hub-price-card"><h3>Enterprise</h3><div class="hub-price">Custom</div><p>For organisations with specific requirements.</p><ul><li>Scope and solution design</li><li>Integration and security review</li><li>Service-level discussion</li></ul><a class="btn ghost" href="#hub-enquiry" data-service="Enterprise solution enquiry">Talk to our team</a></article>
+      </div>
+      <p class="hub-note">*Indicative concepts only, not currently enabled paid plans. Prices exclude any applicable VAT unless expressly confirmed. Live subscriptions require a secure backend, account management, service terms and a payment provider.</p>
+    </div>
+  </section>
+
+  <section id="hub-enquiry" class="hub-section">
+    <div class="container">
+      <div class="hub-heading"><div class="eyebrow">LET'S BUILD YOUR SOLUTION</div><h2>Tell us what your business needs</h2><p>Send a service or product enquiry to Mafube ICT Services. The form prepares an email for you to review and send.</p></div>
+      <div class="hub-form-wrap">
+        <aside class="hub-contact-panel"><h3>Talk to Mafube ICT Services</h3><p>We can discuss ICT equipment, hosted PBX, connectivity, Microsoft services, AI automation, websites, training and support.</p><p><strong>Email</strong><br><a href="mailto:silas.tseuoa@mafubeservices.co.za" style="color:#8bd8ff">silas.tseuoa@mafubeservices.co.za</a></p><p><strong>Telephone</strong><br><a href="tel:+27110708666" style="color:#8bd8ff">011 070 8666</a><br><a href="tel:+27825976262" style="color:#8bd8ff">082 597 6262</a></p><p><strong>WhatsApp</strong><br><a href="https://wa.me/27825976262" target="_blank" rel="noopener noreferrer" style="color:#8bd8ff">Message Mafube</a></p></aside>
+        <form class="hub-form" id="hubEnquiryForm">
+          <label>Full name<input name="name" autocomplete="name" required></label>
+          <label>Business name<input name="business" autocomplete="organization"></label>
+          <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+          <label>Telephone<input name="phone" type="tel" autocomplete="tel"></label>
+          <label class="full">What are you interested in?<select name="service" id="hubServiceSelect" required><option value="">Select a service</option><option>AI Business Assistant</option><option>IT product catalogue quotation</option><option>Hosted PBX and VoIP</option><option>Fibre and LTE/5G connectivity</option><option>Tender and Supplier Desk</option><option>Website and Digital Presence</option><option>IT Learning and Skills</option><option>WhatsApp Sales Assistant</option><option>Managed IT and Support</option><option>Microsoft and Cloud Solutions</option><option>Subscription plan enquiry</option><option>Other</option></select></label>
+          <label class="full">Requirements<textarea name="requirements" placeholder="Tell us what you need, quantities, number of users or sites, and preferred timing."></textarea></label>
+          <label class="full" style="display:flex;flex-direction:row;align-items:flex-start;font-weight:500"><input type="checkbox" name="consent" required style="width:auto;margin-top:4px"> I agree that Mafube ICT Services may use these details to respond to this enquiry.</label>
+          <button class="btn primary" type="submit">Prepare enquiry email</button>
+          <div class="hub-status" id="hubFormStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section id="gallery" class="section alt">
     <div class="container">
 
@@ -1117,7 +1285,7 @@
     <p>Information & Communication Technology Services</p>
 
     <div>
-      <a href="#home">Back to top ↑</a>
+      <a href="#business-hub">Business Hub</a> &nbsp;·&nbsp; <a href="#home">Back to top ↑</a>
     </div>
 
   </div>
@@ -1358,6 +1526,52 @@
   aria-label="WhatsApp Mafube ICT Services">
   WhatsApp
 </a>
+
+
+<script>
+  // Business Hub enquiry form: creates an email draft; it does not transmit or store personal data on this site.
+  (() => {
+    const form = document.getElementById('hubEnquiryForm');
+    const select = document.getElementById('hubServiceSelect');
+    const status = document.getElementById('hubFormStatus');
+    if (!form || !select || !status) return;
+    document.querySelectorAll('[data-service]').forEach(link => {
+      link.addEventListener('click', () => {
+        const wanted = link.getAttribute('data-service');
+        const option = Array.from(select.options).find(o => o.value.toLowerCase() === wanted.toLowerCase() || o.text.toLowerCase() === wanted.toLowerCase());
+        if (option) select.value = option.value;
+        else if (/pbx|voip/i.test(wanted)) select.value = 'Hosted PBX and VoIP';
+        else if (/product|laptop|desktop|monitor|headset|yealink|network|printer|software|licence|connectivity|fibre|lte/i.test(wanted)) select.value = /connectivity|fibre|lte/i.test(wanted) ? 'Fibre and LTE/5G connectivity' : 'IT product catalogue quotation';
+        else if (/tender/i.test(wanted)) select.value = 'Tender and Supplier Desk';
+        else if (/website|digital/i.test(wanted)) select.value = 'Website and Digital Presence';
+        else if (/training|learning|skills/i.test(wanted)) select.value = 'IT Learning and Skills';
+        else if (/whatsapp/i.test(wanted)) select.value = 'WhatsApp Sales Assistant';
+        else if (/support/i.test(wanted)) select.value = 'Managed IT and Support';
+        else if (/microsoft|cloud/i.test(wanted)) select.value = 'Microsoft and Cloud Solutions';
+        else if (/plan|starter|professional|enterprise|business/i.test(wanted)) select.value = 'Subscription plan enquiry';
+        else if (/ai/i.test(wanted)) select.value = 'AI Business Assistant';
+      });
+    });
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const body = [
+        'Mafube ICT Services Business Hub enquiry', '',
+        'Name: ' + (data.get('name') || ''),
+        'Business: ' + (data.get('business') || ''),
+        'Email: ' + (data.get('email') || ''),
+        'Telephone: ' + (data.get('phone') || ''),
+        'Service: ' + (data.get('service') || ''), '',
+        'Requirements:', (data.get('requirements') || 'Not supplied'), '',
+        'Consent to use these details to respond: Yes'
+      ].join('\n');
+      const subject = 'Mafube Business Hub enquiry - ' + (data.get('service') || 'General');
+      status.textContent = 'Your email application should open with the enquiry details. Please review and send the email to complete your request.';
+      window.location.href = 'mailto:silas.tseuoa@mafubeservices.co.za?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+  })();
+</script>
 
 <!-- ================= NAVIGATION & CONTACT SCRIPT ================= -->
 

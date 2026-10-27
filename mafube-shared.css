@@ -1,0 +1,233 @@
+/* Mafube ICT Services shared theme — safe for GitHub Pages */
+:root{--mafube-navy:#071a33;--mafube-blue:#12365f;--mafube-sky:#7dd3fc;--mafube-ink:#17263b;--mafube-muted:#5b6b80;--mafube-pale:#f2f6fb}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{min-width:320px;overflow-wrap:anywhere}
+img,video,iframe{max-width:100%;height:auto}
+.site-header{background:linear-gradient(115deg,#071a33 0%,#12365f 100%)!important;color:#fff!important;position:sticky!important;top:0;z-index:1000;box-shadow:0 5px 22px rgba(7,26,51,.24);border-bottom:1px solid rgba(125,211,252,.22)}
+.site-header .nav-wrap{width:min(100% - 32px,1200px);max-width:1200px;margin:0 auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
+.site-header .brand{flex-shrink:0;display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.site-header .brand-logo{width:48px;height:48px;object-fit:contain;border-radius:8px}
+.site-header .brand-name{display:inline-flex;align-items:baseline;gap:.3em;white-space:nowrap}
+.site-header .brand-name strong,.site-header .brand-name small,.site-header .brand>span strong,.site-header .brand>span small{font-family:Inter,Arial,sans-serif!important;font-size:1.15rem!important;font-weight:800!important;color:#fff!important;line-height:1.1;margin:0;text-transform:none}
+.site-header nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(8px,1.3vw,18px);flex-wrap:wrap;min-width:0}
+.site-header nav a{color:#fff;text-decoration:none;font-weight:600;line-height:1.4;padding:8px 3px;border-radius:5px;white-space:nowrap}
+.site-header nav a:hover,.site-header nav a:focus-visible,.site-header nav a[aria-current="page"]{color:var(--mafube-sky);text-decoration:underline;text-underline-offset:5px}
+.site-header .home-nav-link{font-weight:800!important}
+/* Use the same dark-blue gradient on every subpage hero as the homepage brand palette. */
+.hero{background:linear-gradient(135deg,#071a33 0%,#12365f 68%,#153f76 100%)!important;color:#fff!important}
+.hero h1,.hero h2,.hero p,.hero .lead{color:#fff}
+.hero .eyebrow{color:var(--mafube-sky)!important}
+main{min-height:55vh}
+.container{max-width:1200px}
+.content,.hub-section{padding-left:0;padding-right:0}
+button,input,select,textarea{font:inherit;max-width:100%}
+input,select,textarea{width:100%;min-width:0}
+button,a{touch-action:manipulation}
+footer{overflow-wrap:anywhere}
+.skip-link{z-index:2000}
+@media(max-width:1000px){.site-header .nav-wrap{align-items:flex-start;flex-direction:column;gap:10px;padding:12px 0}.site-header nav{width:100%;justify-content:flex-start;gap:8px 16px}.site-header nav a{padding:7px 0}.hero{padding-top:clamp(42px,7vw,72px)!important}}
+@media(max-width:640px){html{scroll-padding-top:140px}.site-header .nav-wrap{width:calc(100% - 28px)}.site-header .brand-logo{width:40px;height:40px}.site-header .brand-name strong,.site-header .brand-name small,.site-header .brand>span strong,.site-header .brand>span small{font-size:1rem!important}.site-header nav{display:flex;gap:5px 13px}.site-header nav a{font-size:.84rem;white-space:normal}.container{width:calc(100% - 28px)}.hero{padding-bottom:44px!important}.hero h1{font-size:clamp(2rem,9vw,3rem);overflow-wrap:normal}.lead{font-size:1rem}.content{padding-top:32px;padding-bottom:44px}.cards,.hub-grid,.hub-products,.hub-pricing{grid-template-columns:1fr!important}.hub-hero-grid,.hub-form-wrap{grid-template-columns:1fr!important}.panel,.card{min-width:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Full-site background: match the technology image used at the top of index.html. */
+html, body { min-height: 100%; }
+body {
+  background-color: #071a33 !important;
+  background-image: linear-gradient(rgba(7,26,51,.28), rgba(7,26,51,.46)), url('assets/images/Banner.jpeg') !important;
+  background-position: center top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  color: #f4f8ff;
+}
+/* Do not paint whole page sections white: let the same technology image show through. */
+main > section:not(.hero), .content, .stats, .services, .about, .gallery, .contact, .careers {
+  background-color: rgba(7,26,51,.58) !important;
+  background-image: none !important;
+  color: #f4f8ff !important;
+}
+/* All hero/banner areas use the same dark blue treatment over the shared image. */
+.hero {
+  background: linear-gradient(135deg, rgba(7,26,51,.80), rgba(18,54,95,.68)) !important;
+  color: #fff !important;
+}
+.hero h1, .hero h2, .hero p, .hero .lead { color: #fff !important; }
+/* Business Hub sections remain image-backed instead of switching to white backgrounds. */
+.hub-section {
+  background: rgba(7,26,51,.62) !important;
+  color: #f4f8ff !important;
+}
+.hub-section.hub-dark {
+  background: rgba(7,26,51,.78) !important;
+  color: #fff !important;
+}
+/* Subpage panels use a dark translucent glass effect so the image remains visible. */
+.panel {
+  background: rgba(7,26,51,.72) !important;
+  border-color: rgba(125,211,252,.28) !important;
+  color: #f4f8ff !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,.18);
+}
+.panel h2, .panel h3, .content h2, .content h3,
+.stats h2, .services h2, .about h2, .gallery h2, .contact h2, .careers h2 {
+  color: #fff !important;
+}
+.content p, .content li, .content .lead { color: #e6f0fc; }
+/* Keep individual cards/forms legible; only the overall page background is unified. */
+.card, .hub-card, .hub-product, .hub-form, .hub-price-card.featured {
+  color: #14263e;
+}
+.card h2, .card h3, .hub-card h2, .hub-card h3, .hub-product h2, .hub-product h3 {
+  color: #071a33 !important;
+}
+/* Maintain contrast and the same background on mobile devices. */
+@media (max-width: 760px) {
+  body { background-attachment: scroll !important; }
+}
+
+/* Readability and consistent translucent watermark treatment across the entire site. */
+:root {
+  --mafube-glass: rgba(5, 22, 43, .78);
+  --mafube-glass-strong: rgba(5, 22, 43, .88);
+  --mafube-border: rgba(170, 220, 255, .30);
+}
+
+/* Keep the same Banner.jpeg visible behind every page and every section. */
+body {
+  background-color: #071a33 !important;
+  background-image: linear-gradient(rgba(4, 18, 36, .30), rgba(4, 18, 36, .42)), url('assets/images/Banner.jpeg') !important;
+  background-position: center top !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  color: #f7fbff !important;
+}
+
+/* Index page sections: remove opaque white fills and use readable dark glass. */
+main > .section,
+main > .section.alt,
+main > .stats,
+main > .cta,
+main > .hub-section,
+main > .section.contact,
+main > .section.pabx-section,
+main > .section.microsoft-section,
+main > .top-info-bar {
+  background-color: rgba(5, 22, 43, .70) !important;
+  background-image: linear-gradient(135deg, rgba(5,22,43,.76), rgba(10,42,75,.66)) !important;
+  color: #f7fbff !important;
+}
+
+/* The home banner image itself remains visible, without a white container. */
+.home-banner { background: transparent !important; }
+.home-banner img { display: block; width: 100%; height: auto; }
+
+/* Make headings and ordinary text readable on dark translucent sections. */
+main > section:not(.connector-panel) h1,
+main > section:not(.connector-panel) h2,
+main > section:not(.connector-panel) h3,
+main > section:not(.connector-panel) h4,
+main > section:not(.connector-panel) p,
+main > section:not(.connector-panel) li,
+main > section:not(.connector-panel) label,
+main > section:not(.connector-panel) .eyebrow,
+main > section:not(.connector-panel) .section-heading,
+main > section:not(.connector-panel) .section-heading p,
+main > section:not(.connector-panel) .stats-grid strong,
+main > section:not(.connector-panel) .stats-grid span {
+  color: #f7fbff !important;
+}
+main > section:not(.connector-panel) a:not(.btn) {
+  color: #8bd8ff !important;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+main > section:not(.connector-panel) a:not(.btn):hover,
+main > section:not(.connector-panel) a:not(.btn):focus-visible {
+  color: #ffffff !important;
+}
+
+/* Every content card becomes a translucent panel, not a solid white block. */
+.card,
+.hub-card,
+.hub-product,
+.hub-form,
+.hub-price-card,
+.hub-price-card.featured,
+.hero-card,
+.feature-card,
+.feature-panel,
+.panel,
+.content .panel,
+.cards .card {
+  background: rgba(5, 22, 43, .82) !important;
+  background-image: linear-gradient(145deg, rgba(10, 40, 70, .82), rgba(5, 22, 43, .78)) !important;
+  color: #f7fbff !important;
+  border: 1px solid var(--mafube-border) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .22) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.card h1, .card h2, .card h3, .card h4,
+.hub-card h1, .hub-card h2, .hub-card h3, .hub-card h4,
+.hub-product h1, .hub-product h2, .hub-product h3,
+.hub-price-card h1, .hub-price-card h2, .hub-price-card h3,
+.panel h1, .panel h2, .panel h3, .panel h4,
+.card p, .card li, .hub-card p, .hub-card li,
+.hub-product p, .hub-product li, .hub-price-card p,
+.hub-form label, .hub-contact-panel p {
+  color: #f7fbff !important;
+}
+.hub-card .hub-icon,
+.card .icon,
+.card .symbol {
+  background: rgba(125, 211, 252, .16) !important;
+  color: #8bd8ff !important;
+}
+.hub-kicker, .hub-pill-row span {
+  background: rgba(125, 211, 252, .14) !important;
+  color: #eaf8ff !important;
+  border: 1px solid rgba(125,211,252,.28) !important;
+}
+
+/* Inputs remain light with dark input text so forms are easy to complete. */
+input, select, textarea,
+.hub-form input, .hub-form select, .hub-form textarea {
+  background: #ffffff !important;
+  color: #14263e !important;
+  border: 1px solid #b9cce0 !important;
+}
+input::placeholder, textarea::placeholder { color: #5b6b80 !important; opacity: 1; }
+button, .btn { font-weight: 800; }
+.btn.primary, .btn:not(.ghost) { color: #071a33 !important; }
+.btn.ghost { color: #ffffff !important; border-color: rgba(255,255,255,.55) !important; }
+
+/* Subpages share the same watermark and translucent panel styling. */
+.content,
+main .content,
+main > .content,
+body > main > section.content,
+footer {
+  background: rgba(5, 22, 43, .70) !important;
+  color: #f7fbff !important;
+}
+.content p, .content li, .content h1, .content h2, .content h3,
+.content h4, .content strong, .content label, .content .lead,
+footer, footer p, footer a {
+  color: #f7fbff !important;
+}
+
+/* The Connector chat window is a functional UI and keeps its own high-contrast surfaces. */
+.connector-panel { background: #ffffff !important; color: #172b46 !important; }
+.connector-panel h1, .connector-panel h2, .connector-panel h3,
+.connector-panel p, .connector-panel label { color: #172b46 !important; }
+.connector-panel .connector-header,
+.connector-panel .connector-message.user { color: #ffffff !important; }
+
+@media (max-width: 760px) {
+  body { background-attachment: scroll !important; }
+  .card, .hub-card, .hub-product, .hub-form, .panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

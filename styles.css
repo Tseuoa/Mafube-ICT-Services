@@ -284,3 +284,30 @@ h1,h2,h3,h4,p,li,a,address{overflow-wrap:break-word}
 footer{background:#0b4a94}
 footer .brand strong{color:#fff}
 footer .brand small{color:#bfe0ff}
+
+/* ===== Page background: Cape Town / Table Mountain (whole page) ===== */
+/* Fixed photo behind everything, with a dark navy tint so white text stays readable.
+   Lower the .45/.55 values to show the photo brighter. */
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(rgba(4,22,50,.45),rgba(4,22,50,.55)),#0a3d8f url("assets/images/cape-town-bg.jpg") center/cover no-repeat}
+
+/* Sections no longer paint their own background, so the photo shows everywhere */
+.hero,.section,.contact,.microsoft-section,.pabx-section,.top-section{background:transparent}
+.alt{background:rgba(6,45,92,.22)}
+
+/* Text that sits directly on the photo turns light */
+h1,h2,.hero .lead,.hero .trust-row,
+.section-heading>p,.two-col>div:not(.about-panel)>p,.contact-grid>div:first-child>p,
+.pabx-copy h3,.pabx-copy p,.pabx-copy ul,.pabx-gallery-heading h3,
+.contact-list a,.contact-list span{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+h1 span{color:#bfe0ff}
+.hero .eyebrow,.section .eyebrow,.contact .eyebrow,.contact-list strong{color:#bfe0ff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.pabx-photo-note{color:#dbeaff}
+
+/* "One partner" boxes had no fill, so give them a glass panel */
+.solution{background:rgba(6,45,92,.45);border-color:rgba(255,255,255,.25)}
+.solution h3,.solution p{color:#fff;text-shadow:none}
+.solution span{color:#bfe0ff}
+
+/* Counter / B-BBEE strip */
+.top-info-bar{background:rgba(226,238,255,.9);border-radius:14px;padding-inline:18px;margin-block:14px}

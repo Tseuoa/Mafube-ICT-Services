@@ -1128,6 +1128,71 @@
   </div>
 </footer>
 
+<!-- ================= AI QUICK LINKS ================= -->
+<style>
+  .ai-quick-links {
+    position: fixed;
+    left: 22px;
+    bottom: 88px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .ai-quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 7px 16px 7px 8px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #153f76, #087fbd);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,.24);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .ai-quick-link:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.28); }
+  .ai-quick-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border-radius: 50%;
+    background: #fff;
+    color: #153f76;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  @media (max-width: 480px) {
+    .ai-quick-links { left: 10px; bottom: 82px; gap: 6px; }
+    .ai-quick-link { min-height: 42px; padding: 5px 11px 5px 6px; gap: 7px; font-size: 12px; }
+    .ai-quick-icon { width: 28px; height: 28px; flex-basis: 28px; }
+  }
+</style>
+<nav class="ai-quick-links" aria-label="AI assistant links">
+  <a class="ai-quick-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Open ChatGPT">
+    <span class="ai-quick-icon" aria-hidden="true">GPT</span><span>ChatGPT</span>
+  </a>
+  <a class="ai-quick-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer" aria-label="Open Claude">
+    <span class="ai-quick-icon" aria-hidden="true">C</span><span>Claude</span>
+  </a>
+  <a class="ai-quick-link" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Microsoft Copilot">
+    <span class="ai-quick-icon" aria-hidden="true">Co</span><span>Copilot</span>
+  </a>
+  <a class="ai-quick-link" href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" aria-label="Open DeepSeek">
+    <span class="ai-quick-icon" aria-hidden="true">DS</span><span>DeepSeek</span>
+  </a>
+  <a class="ai-quick-link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Google Gemini">
+    <span class="ai-quick-icon" aria-hidden="true">G</span><span>Gemini</span>
+  </a>
+</nav>
+
 <!-- ================= CONNECTOR AI AGENT ================= -->
 <style>
   .connector-launcher {

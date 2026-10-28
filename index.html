@@ -149,9 +149,75 @@
       }
     }
   </style>
+
+  <!-- Google AdSense: replace the publisher placeholder with your approved AdSense publisher ID. -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+  <style>
+    /* Google AdSense side placements; the existing page design/content is otherwise unchanged. */
+    .mafube-adsense-side {
+      position: fixed;
+      top: 150px;
+      width: 160px;
+      min-height: 300px;
+      z-index: 900;
+      padding: 6px;
+      box-sizing: border-box;
+      background: rgba(255,255,255,.96);
+      border: 1px solid #d8e5f1;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(7,26,51,.12);
+      color: #52647a;
+      font: 11px/1.4 Inter, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    .mafube-adsense-side-left { left: 6px; }
+    .mafube-adsense-side-right { right: 6px; }
+    .mafube-adsense-label {
+      display: block;
+      margin: 0 0 5px;
+      color: #52647a;
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .mafube-adsense-side .adsbygoogle {
+      display: block;
+      width: 100%;
+      min-height: 280px;
+    }
+    @media (max-width: 1250px) {
+      .mafube-adsense-side { display: none !important; }
+    }
+  </style>
+
 </head>
 
 <body>
+
+  <!-- Google AdSense side advertisements (left and right). Replace both slot placeholders
+       with ad-unit slot IDs from the approved Mafube ICT Services AdSense account. -->
+  <aside class="mafube-adsense-side mafube-adsense-side-left" aria-label="Advertisement">
+    <span class="mafube-adsense-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>
+  <aside class="mafube-adsense-side mafube-adsense-side-right" aria-label="Advertisement">
+    <span class="mafube-adsense-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="YYYYYYYYYY"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>
+
 
 <a class="skip-link" href="#main">Skip to content</a>
 

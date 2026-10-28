@@ -35,17 +35,80 @@ ul{padding-left:22px;margin:10px 0 0}li{margin:7px 0}
 footer{background:var(--navy);color:#d7e4f3;padding:24px 0;font-size:.9rem}
 footer a{color:var(--sky);text-decoration:none}
 @media(max-width:700px){.nav-wrap{align-items:flex-start;flex-direction:column}nav{gap:12px 16px}.cards{grid-template-columns:1fr}.hero{padding:52px 0}}
+</style>
 
-.home-nav-link{font-weight:800!important;text-decoration:underline;text-underline-offset:4px}
-.home-nav-link:focus-visible{outline:2px solid var(--sky);outline-offset:4px}
-</style></head><body>
+  <!-- Google AdSense: replace the publisher placeholder with your approved AdSense publisher ID. -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+  <style>
+    /* Google AdSense side placements; the existing page design/content is otherwise unchanged. */
+    .mafube-adsense-side {
+      position: fixed;
+      top: 150px;
+      width: 160px;
+      min-height: 300px;
+      z-index: 900;
+      padding: 6px;
+      box-sizing: border-box;
+      background: rgba(255,255,255,.96);
+      border: 1px solid #d8e5f1;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(7,26,51,.12);
+      color: #52647a;
+      font: 11px/1.4 Inter, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    .mafube-adsense-side-left { left: 6px; }
+    .mafube-adsense-side-right { right: 6px; }
+    .mafube-adsense-label {
+      display: block;
+      margin: 0 0 5px;
+      color: #52647a;
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .mafube-adsense-side .adsbygoogle {
+      display: block;
+      width: 100%;
+      min-height: 280px;
+    }
+    @media (max-width: 1250px) {
+      .mafube-adsense-side { display: none !important; }
+    }
+  </style>
+</head><body>
+
+  <!-- Google AdSense side advertisements (left and right). Replace both slot placeholders
+       with ad-unit slot IDs from the approved Mafube ICT Services AdSense account. -->
+  <aside class="mafube-adsense-side mafube-adsense-side-left" aria-label="Advertisement">
+    <span class="mafube-adsense-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>
+  <aside class="mafube-adsense-side mafube-adsense-side-right" aria-label="Advertisement">
+    <span class="mafube-adsense-label">Advertisement</span>
+    <ins class="adsbygoogle"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="YYYYYYYYYY"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </aside>
+
 
 <header class="site-header"><div class="nav-wrap">
 <a class="brand" href="index.html" aria-label="Mafube ICT Services home">
 <img class="brand-logo" src="assets/images/logo2.jpg" alt="Mafube ICT Services logo">
 <span><strong>Mafube ICT</strong><small>Services</small></span></a>
 <nav aria-label="Main navigation">
-<a href="index.html#home" class="home-nav-link" aria-label="Go to homepage">Home</a><a href="index.html#about">About</a>
+<a href="index.html">Home</a><a href="index.html#about">About</a>
 <a href="mission.html">Mission</a><a href="vision.html">Vision</a>
 <a href="values.html">Values</a><a href="executive.html">Executive</a>
 <a href="index.html#services">Services</a><a href="index.html#contact">Contact</a>

@@ -1074,7 +1074,7 @@
 
   <section id="hub-enquiry" class="hub-section">
     <div class="container">
-      <div class="hub-heading"><div class="eyebrow">LET'S BUILD YOUR SOLUTION</div><h2>Tell us what your business needs</h2><p>Send a service or product enquiry to Mafube ICT Services. The form prepares an email for you to review and send.</p></div>
+      <div class="hub-heading"><div class="eyebrow">LET'S BUILD YOUR SOLUTION</div><h2>Tell us what your business needs</h2><p>Send a service or product enquiry directly to Mafube ICT Services.</p></div>
       <div class="hub-form-wrap">
         <aside class="hub-contact-panel"><h3>Talk to Mafube ICT Services</h3><p>We can discuss ICT equipment, hosted PBX, connectivity, Microsoft services, AI automation, websites, training and support.</p><p><strong>Email</strong><br><a href="mailto:silas.tseuoa@mafubeservices.co.za" style="color:#8bd8ff">silas.tseuoa@mafubeservices.co.za</a></p><p><strong>Telephone</strong><br><a href="tel:+27110708666" style="color:#8bd8ff">011 070 8666</a><br><a href="tel:+27825976262" style="color:#8bd8ff">082 597 6262</a></p><p><strong>WhatsApp</strong><br><a href="https://wa.me/27825976262" target="_blank" rel="noopener noreferrer" style="color:#8bd8ff">Message Mafube</a></p></aside>
         <form class="hub-form" id="hubEnquiryForm">
@@ -1085,7 +1085,7 @@
           <label class="full">What are you interested in?<select name="service" id="hubServiceSelect" required><option value="">Select a service</option><option>AI Business Assistant</option><option>IT product catalogue quotation</option><option>Hosted PBX and VoIP</option><option>Fibre and LTE/5G connectivity</option><option>Tender and Supplier Desk</option><option>Website and Digital Presence</option><option>IT Learning and Skills</option><option>WhatsApp Sales Assistant</option><option>Managed IT and Support</option><option>Microsoft and Cloud Solutions</option><option>Subscription plan enquiry</option><option>Other</option></select></label>
           <label class="full">Requirements<textarea name="requirements" placeholder="Tell us what you need, quantities, number of users or sites, and preferred timing."></textarea></label>
           <label class="full" style="display:flex;flex-direction:row;align-items:flex-start;font-weight:500"><input type="checkbox" name="consent" required style="width:auto;margin-top:4px"> I agree that Mafube ICT Services may use these details to respond to this enquiry.</label>
-          <button class="btn primary" type="submit">Prepare enquiry email</button>
+          <button class="btn primary" type="submit">Send enquiry</button>
           <div class="hub-status" id="hubFormStatus" role="status" aria-live="polite"></div>
         </form>
       </div>
@@ -1288,9 +1288,8 @@
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
 
         <small>
-          This form opens your email app with your enquiry addressed to
-          silas.tseuoa@mafubeservices.co.za. Review it and press Send.
-          If no email app opens, email that address directly.
+          Your enquiry will be sent securely to Mafube ICT Services. If you have
+          trouble submitting the form, email silas.tseuoa@mafubeservices.co.za.
         </small>
 
       </form>
@@ -1599,8 +1598,7 @@
   (() => {
     const form = document.getElementById('hubEnquiryForm');
     const select = document.getElementById('hubServiceSelect');
-    const status = document.getElementById('hubFormStatus');
-    if (!form || !select || !status) return;
+    if (!form || !select) return;
     document.querySelectorAll('[data-service]').forEach(link => {
       link.addEventListener('click', () => {
         const wanted = link.getAttribute('data-service');
@@ -1617,24 +1615,6 @@
         else if (/plan|starter|professional|enterprise|business/i.test(wanted)) select.value = 'Subscription plan enquiry';
         else if (/ai/i.test(wanted)) select.value = 'AI Business Assistant';
       });
-    });
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      if (!form.reportValidity()) return;
-      const data = new FormData(form);
-      const body = [
-        'Mafube ICT Services Business Hub enquiry', '',
-        'Name: ' + (data.get('name') || ''),
-        'Business: ' + (data.get('business') || ''),
-        'Email: ' + (data.get('email') || ''),
-        'Telephone: ' + (data.get('phone') || ''),
-        'Service: ' + (data.get('service') || ''), '',
-        'Requirements:', (data.get('requirements') || 'Not supplied'), '',
-        'Consent to use these details to respond: Yes'
-      ].join('\n');
-      const subject = 'Mafube Business Hub enquiry - ' + (data.get('service') || 'General');
-      status.textContent = 'Your email application should open with the enquiry details. Please review and send the email to complete your request.';
-      window.location.href = 'mailto:silas.tseuoa@mafubeservices.co.za?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     });
   })();
 </script>

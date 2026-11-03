@@ -2,8 +2,65 @@ const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('#m
 const setMenuOpen=open=>{if(!menu||!nav)return;nav.classList.toggle('open',open);menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')};
 if(menu&&nav){menu.addEventListener('click',()=>setMenuOpen(menu.getAttribute('aria-expanded')!=='true'));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true'){setMenuOpen(false);menu.focus()}});}
 if(nav){nav.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(a=>a.addEventListener('click',()=>setMenuOpen(false)));window.addEventListener('resize',()=>{if(window.innerWidth>1150)setMenuOpen(false)});}
+const contactApiUrl='https://mafube-ict-services-kwln.onrender.com/api/contact';
+const contactEmail='silas.tseuoa@mafubeservices.co.za';
+
+async function sendEnquiry(form,status,payload){
+  const submitButton=form.querySelector('button[type="submit"]');
+  const originalButtonText=submitButton.textContent;
+  submitButton.disabled=true;
+  submitButton.textContent='Sending...';
+  status.textContent='Sending your enquiry...';
+
+  try{
+    const response=await fetch(contactApiUrl,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok)throw new Error(result.error||'Unable to send your enquiry.');
+    status.textContent='Thank you. Your enquiry has been sent to Mafube ICT Services.';
+    form.reset();
+  }catch{
+    status.textContent=`We couldn't send your enquiry. Please email ${contactEmail} directly.`;
+  }finally{
+    submitButton.disabled=false;
+    submitButton.textContent=originalButtonText;
+  }
+}
+
 const form=document.querySelector('#contactForm'),status=document.querySelector('#formStatus');
-if(form&&status){form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form);const body=[`Name: ${data.get('name')}`,`Company: ${data.get('company')||'Not provided'}`,`Email: ${data.get('email')}`,'','Enquiry:',data.get('message')].join('\r\n');const subject=encodeURIComponent('Website enquiry');status.textContent='Opening your email app with the enquiry. Review it and press Send. If it does not open, email silas.tseuoa@mafubeservices.co.za.';window.location.href=`mailto:silas.tseuoa@mafubeservices.co.za?subject=${subject}&body=${encodeURIComponent(body)}`;});}
+if(form&&status){form.addEventListener('submit',event=>{
+  event.preventDefault();
+  if(!form.reportValidity())return;
+  const data=new FormData(form);
+  sendEnquiry(form,status,{
+    formType:'contact',
+    name:data.get('name'),
+    company:data.get('company'),
+    email:data.get('email'),
+    message:data.get('message')
+  });
+});}
+
+const hubForm=document.querySelector('#hubEnquiryForm');
+const hubStatus=document.querySelector('#hubFormStatus');
+if(hubForm&&hubStatus){hubForm.addEventListener('submit',event=>{
+  event.preventDefault();
+  if(!hubForm.reportValidity())return;
+  const data=new FormData(hubForm);
+  sendEnquiry(hubForm,hubStatus,{
+    formType:'business_hub',
+    name:data.get('name'),
+    company:data.get('business'),
+    email:data.get('email'),
+    phone:data.get('phone'),
+    service:data.get('service'),
+    requirements:data.get('requirements'),
+    consent:data.get('consent')==='on'
+  });
+});}
 
 /*
  * About dropdown:

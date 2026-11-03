@@ -1,5 +1,24 @@
 const express=require('express'), mysql=require('mysql2/promise'), path=require('path');
-const app=express(); if(process.env.TRUST_PROXY==='true')app.set('trust proxy',1); app.use(express.json({limit:'20kb'})); app.use(express.static(__dirname));
+const app=express(); if(process.env.TRUST_PROXY==='true')app.set('trust proxy',1); app.use(express.json({limit:'20kb'}));
+const allowedContactOrigins=new Set([
+ 'https://mafubeservices.co.za',
+ 'https://www.mafubeservices.co.za',
+ 'https://mafube-ict-services-kwln.onrender.com',
+ ...(process.env.ALLOWED_ORIGINS||'').split(',').map(origin=>origin.trim()).filter(Boolean)
+]);
+app.use('/api/contact',(req,res,next)=>{
+ const origin=req.get('origin');
+ if(origin&&!allowedContactOrigins.has(origin))return res.status(403).json({error:'Origin not allowed.'});
+ if(origin){
+  res.set('Access-Control-Allow-Origin',origin);
+  res.set('Access-Control-Allow-Methods','POST, OPTIONS');
+  res.set('Access-Control-Allow-Headers','Content-Type');
+  res.set('Vary','Origin');
+ }
+ if(req.method==='OPTIONS')return res.sendStatus(204);
+ next();
+});
+app.use(express.static(__dirname));
 const pool=mysql.createPool({host:process.env.DB_HOST||'localhost',user:process.env.DB_USER||'root',password:process.env.DB_PASSWORD||'',database:process.env.DB_NAME||'mafube_ict'});
 const contactAttempts=new Map(),contactWindowMs=15*60*1000,contactMaxAttempts=5;
 let cachedGraphToken,cachedGraphTokenExpiresAt=0;
@@ -23,10 +42,19 @@ async function getGraphAccessToken(tenantId,clientId,clientSecret){
  return cachedGraphToken;
 }
 app.post('/api/contact',async(req,res)=>{
- const {name,company,email,message}=req.body||{};
- if(typeof name!=='string'||typeof email!=='string'||typeof message!=='string'||!name.trim()||!email.trim()||!message.trim())return res.status(400).json({error:'Name, email and message are required.'});
- const cleanName=name.trim().replace(/[\r\n\x00-\x1f\x7f]/g,' '),cleanCompany=typeof company==='string'?company.trim().replace(/[\r\n\x00-\x1f\x7f]/g,' '):'',cleanEmail=email.trim(),cleanMessage=message.trim();
- if(cleanName.length>150||cleanCompany.length>200||cleanEmail.length>254||cleanMessage.length>5000||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail))return res.status(400).json({error:'Please check your details and try again.'});
+ const {formType='contact',name,company,email,message,phone,service,requirements,consent}=req.body||{};
+ const rawMessage=formType==='business_hub'?requirements:message;
+ if(!['contact','business_hub'].includes(formType)||typeof name!=='string'||typeof email!=='string'||typeof rawMessage!=='string'||
+  !name.trim()||!email.trim()||(formType==='contact'&&!rawMessage.trim())||
+  (formType==='business_hub'&&(typeof service!=='string'||!service.trim()||consent!==true)))return res.status(400).json({error:'Please check the enquiry details and try again.'});
+ const cleanName=name.trim().replace(/[\r\n\x00-\x1f\x7f]/g,' '),
+  cleanCompany=typeof company==='string'?company.trim().replace(/[\r\n\x00-\x1f\x7f]/g,' '):'',
+  cleanEmail=email.trim(),
+  cleanMessage=rawMessage.trim().replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/g,''),
+  cleanPhone=typeof phone==='string'?phone.trim().replace(/[\r\n\x00-\x1f\x7f]/g,' '):'',
+  cleanService=typeof service==='string'?service.trim().replace(/[\r\n\x00-\x1f\x7f]/g,' '):'';
+ if(cleanName.length>150||cleanCompany.length>200||cleanEmail.length>254||cleanMessage.length>5000||cleanPhone.length>40||cleanService.length>120||
+  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail))return res.status(400).json({error:'Please check your details and try again.'});
  const {MS_TENANT_ID,MS_CLIENT_ID,MS_CLIENT_SECRET}=process.env,sender=process.env.MS_SENDER||'silas.tseuoa@mafubeservices.co.za';
  if(!MS_TENANT_ID||!MS_CLIENT_ID||!MS_CLIENT_SECRET)return res.status(503).json({error:'Microsoft email is not configured. Please email Silas directly.'});
  const now=Date.now(),ip=req.ip||req.socket.remoteAddress||'unknown',attempt=contactAttempts.get(ip);
@@ -43,8 +71,8 @@ app.post('/api/contact',async(req,res)=>{
    headers:{Authorization:'Bearer '.concat(accessToken),'Content-Type':'application/json'},
    body:JSON.stringify({
     message:{
-     subject:`Website enquiry from ${cleanName}`,
-     body:{contentType:'Text',content:`Name: ${cleanName}\nCompany: ${cleanCompany||'Not provided'}\nEmail: ${cleanEmail}\n\nEnquiry:\n${cleanMessage}`},
+     subject:formType==='business_hub'?`Business Hub enquiry: ${cleanService}`:`Website enquiry from ${cleanName}`,
+     body:{contentType:'Text',content:`${formType==='business_hub'?'Business Hub enquiry':'Website enquiry'}\nName: ${cleanName}\nCompany: ${cleanCompany||'Not provided'}\nEmail: ${cleanEmail}${cleanPhone?`\nTelephone: ${cleanPhone}`:''}${cleanService?`\nService: ${cleanService}`:''}\n\nRequirements:\n${cleanMessage||'Not provided'}${formType==='business_hub'?'\n\nConsent to use these details to respond: Yes':''}`},
      toRecipients:[{emailAddress:{address:'silas.tseuoa@mafubeservices.co.za'}}],
      replyTo:[{emailAddress:{address:cleanEmail}}]
     },

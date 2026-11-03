@@ -11,6 +11,8 @@ services:
         value: production
       - key: TRUST_PROXY
         value: "true"
+      - key: ALLOWED_ORIGINS
+        value: "https://mafubeservices.co.za,https://www.mafubeservices.co.za,https://mafube-ict-services-kwln.onrender.com"
       - key: MS_TENANT_ID
         sync: false
       - key: MS_CLIENT_ID

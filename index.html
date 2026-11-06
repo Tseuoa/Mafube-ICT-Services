@@ -1462,8 +1462,33 @@
   .connector-message {
     max-width: 92%; padding: 10px 12px; border-radius: 12px;
     background: #eef4fa; line-height: 1.45; font-size: 14px; overflow-wrap: anywhere;
+    white-space: pre-wrap;
   }
   .connector-message.user { align-self: flex-end; color: #fff; background: #087fbd; }
+  .connector-settings { flex: 0 0 auto; padding: 0 16px 10px; }
+  .connector-settings label { display: block; margin-bottom: 5px; color: #40536a; font-size: 12px; font-weight: 700; }
+  .connector-settings select,
+  .connector-compose input,
+  .connector-compose button { box-sizing: border-box; min-height: 44px; font: inherit; }
+  .connector-settings select {
+    width: 100%; padding: 8px 10px; border: 1px solid #cbd9e8; border-radius: 8px;
+    background: #fff; color: #172b46;
+  }
+  .connector-compose { display: flex; flex: 0 0 auto; gap: 8px; padding: 0 16px 10px; }
+  .connector-compose input {
+    flex: 1 1 auto; min-width: 0; padding: 9px 11px; border: 1px solid #cbd9e8;
+    border-radius: 8px; background: #fff; color: #172b46;
+  }
+  .connector-compose button {
+    flex: 0 0 auto; padding: 8px 14px; border: 0; border-radius: 8px;
+    background: #087fbd; color: #fff; font-weight: 700; cursor: pointer;
+  }
+  .connector-compose button:disabled,
+  .connector-compose input:disabled,
+  .connector-settings select:disabled,
+  .connector-quick button:disabled { cursor: not-allowed; opacity: .6; }
+  .connector-status { flex: 0 0 auto; min-height: 1.35em; padding: 0 16px 8px; color: #617187; font-size: 12px; }
+  .connector-status[data-state="error"] { color: #a12622; }
   .connector-quick { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 7px; padding: 0 16px 14px; }
   .connector-quick button {
     box-sizing: border-box; min-height: 44px; max-width: 100%; padding: 7px 10px;
@@ -1528,13 +1553,28 @@
   <div class="connector-messages" id="connectorMessages" aria-live="polite">
     <div class="connector-message">Hello! I’m Connector. What can I help you with today?</div>
   </div>
+  <div class="connector-settings">
+    <label for="connectorProvider">AI provider</label>
+    <select id="connectorProvider" name="provider">
+      <option value="openai">OpenAI</option>
+      <option value="azure-openai">Azure OpenAI</option>
+      <option value="gemini">Google Gemini</option>
+      <option value="claude">Anthropic Claude</option>
+    </select>
+  </div>
+  <form class="connector-compose" id="connectorForm">
+    <input id="connectorInput" name="message" type="text" maxlength="4000"
+           autocomplete="off" placeholder="Type your question…" aria-label="Your question" required>
+    <button id="connectorSend" type="submit">Send</button>
+  </form>
+  <div class="connector-status" id="connectorStatus" role="status" aria-live="polite"></div>
   <div class="connector-quick" aria-label="Suggested questions">
     <button type="button" data-question="Tell me about Hosted PBX and VoIP">Hosted PBX &amp; VoIP</button>
     <button type="button" data-question="Tell me about Microsoft 365 services">Microsoft 365</button>
     <button type="button" data-question="I need a connectivity quote">Connectivity quote</button>
     <button type="button" data-question="How do I contact Mafube ICT Services?">Contact Mafube</button>
   </div>
-  <div class="connector-note">Preview assistant: connect an AI service to enable open-ended, AI-generated replies.</div>
+  <div class="connector-note">Do not share passwords, payment details, or sensitive personal information.</div>
 </section>
 
 <script>
@@ -1543,13 +1583,27 @@
     const panel = document.getElementById('connectorPanel');
     const close = document.getElementById('connectorClose');
     const messages = document.getElementById('connectorMessages');
-    if (!launcher || !panel || !close || !messages) return;
+    const form = document.getElementById('connectorForm');
+    const input = document.getElementById('connectorInput');
+    const send = document.getElementById('connectorSend');
+    const provider = document.getElementById('connectorProvider');
+    const status = document.getElementById('connectorStatus');
+    if (!launcher || !panel || !close || !messages || !form || !input || !send || !provider || !status) return;
+
+    const apiBaseUrl = typeof window.CONNECTOR_API_BASE_URL === 'string'
+      ? window.CONNECTOR_API_BASE_URL.trim().replace(/\/+$/, '')
+      : '';
+    const history = [];
+    let pending = false;
+    status.textContent = apiBaseUrl
+      ? 'Ready to connect to the selected AI provider.'
+      : 'AI is not connected yet. Configure CONNECTOR_API_BASE_URL to enable answers.';
 
     function setOpen(open) {
       panel.classList.toggle('is-open', open);
       panel.setAttribute('aria-hidden', String(!open));
       launcher.setAttribute('aria-expanded', String(open));
-      if (open) close.focus(); else launcher.focus();
+      if (open) input.focus(); else launcher.focus();
     }
     function addMessage(text, type) {
       const item = document.createElement('div');
@@ -1558,25 +1612,74 @@
       messages.appendChild(item);
       messages.scrollTop = messages.scrollHeight;
     }
-    function replyTo(question) {
-      addMessage(question, 'user');
-      const q = question.toLowerCase();
-      let reply = 'Thanks for your question. Please contact Mafube ICT Services at silas.tseuoa@mafubeservices.co.za or call 011 070 8666 / 082 597 6262 so our team can assist.';
-      if (q.includes('hosted pbx') || q.includes('voip')) {
-        reply = 'Mafube ICT Services can help with Hosted PBX, VoIP, IP telephony, call routing and contact-centre solutions. Contact us for a solution tailored to your business.';
-      } else if (q.includes('microsoft')) {
-        reply = 'We can assist with Microsoft 365, Teams, cloud productivity and related licensing and support. Contact us to discuss your requirements.';
-      } else if (q.includes('connectivity') || q.includes('quote')) {
-        reply = 'We can discuss fibre, LTE/5G and business connectivity options. Please share your site location and requirements with our team to request a quote.';
-      } else if (q.includes('contact') || q.includes('email') || q.includes('phone')) {
-        reply = 'Email silas.tseuoa@mafubeservices.co.za or call 011 070 8666 / 082 597 6262. You can also use the WhatsApp button below.';
+    async function sendQuestion(question) {
+      const text = question.trim();
+      if (!text || pending) return;
+
+      addMessage(text, 'user');
+      if (!apiBaseUrl) {
+        status.dataset.state = 'error';
+        status.textContent = 'AI is not connected. Ask the site administrator to configure CONNECTOR_API_BASE_URL and deploy the backend.';
+        return;
       }
-      window.setTimeout(() => addMessage(reply, 'assistant'), 250);
+
+      history.push({ role: 'user', content: text });
+      while (history.length > 20) history.shift();
+      pending = true;
+      input.disabled = true;
+      send.disabled = true;
+      provider.disabled = true;
+      panel.querySelectorAll('[data-question]').forEach(button => { button.disabled = true; });
+      status.dataset.state = 'busy';
+      status.textContent = 'Connecting to the selected AI provider…';
+
+      try {
+        const response = await fetch(`${apiBaseUrl}/api/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ provider: provider.value, messages: history })
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(data.error && typeof data.error.message === 'string'
+            ? data.error.message
+            : 'The chat service could not complete your request.');
+        }
+        if (typeof data.reply !== 'string' || !data.reply.trim()) {
+          throw new Error('The chat service returned an empty response.');
+        }
+        history.push({ role: 'assistant', content: data.reply });
+        while (history.length > 20) history.shift();
+        addMessage(data.reply, 'assistant');
+        status.dataset.state = 'ready';
+        status.textContent = 'Response received.';
+      } catch (error) {
+        status.dataset.state = 'error';
+        status.textContent = error instanceof Error
+          ? error.message
+          : 'Unable to reach the chat service. Please try again later.';
+      } finally {
+        pending = false;
+        input.disabled = false;
+        send.disabled = false;
+        provider.disabled = false;
+        panel.querySelectorAll('[data-question]').forEach(button => { button.disabled = false; });
+        if (panel.classList.contains('is-open')) input.focus();
+      }
     }
+
     launcher.addEventListener('click', () => setOpen(!panel.classList.contains('is-open')));
     close.addEventListener('click', () => setOpen(false));
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const question = input.value;
+      if (question.trim()) {
+        input.value = '';
+        sendQuestion(question);
+      }
+    });
     panel.querySelectorAll('[data-question]').forEach(button => {
-      button.addEventListener('click', () => replyTo(button.getAttribute('data-question')));
+      button.addEventListener('click', () => sendQuestion(button.getAttribute('data-question') || ''));
     });
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && panel.classList.contains('is-open')) setOpen(false); });
   })();

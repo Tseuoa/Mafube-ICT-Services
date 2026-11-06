@@ -1375,12 +1375,15 @@
 <style>
   .connector-launcher {
     position: fixed;
-    right: 22px;
+    right: max(22px, env(safe-area-inset-right));
     bottom: 88px;
     z-index: 1000;
     display: inline-flex;
     align-items: center;
     gap: 9px;
+    box-sizing: border-box;
+    max-width: calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right));
+    min-height: 44px;
     padding: 12px 18px;
     border: 1px solid rgba(255,255,255,.22);
     border-radius: 999px;
@@ -1411,13 +1414,14 @@
   }
   .connector-panel {
     position: fixed;
-    right: 22px;
+    right: max(12px, env(safe-area-inset-right));
     bottom: 145px;
     z-index: 1001;
     display: none;
     flex-direction: column;
-    width: min(350px, calc(100vw - 32px));
-    max-height: min(480px, calc(100vh - 180px));
+    box-sizing: border-box;
+    width: min(350px, calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+    max-height: min(480px, calc(100vh - 160px));
     overflow: hidden;
     border: 1px solid #d8e2ef;
     border-radius: 18px;
@@ -1429,7 +1433,7 @@
   .connector-panel.is-open { display: flex; }
   .connector-head {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; padding: 15px 17px; color: #fff;
+    flex: 0 0 auto; gap: 12px; padding: 15px 17px; color: #fff;
     background: linear-gradient(135deg, #102c50, #087fbd);
   }
   .connector-brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
@@ -1440,18 +1444,67 @@
     box-shadow: 0 2px 8px rgba(0,0,0,.18);
   }
   .connector-head strong { display: block; font-size: 16px; }
-  .connector-head small { display: block; margin-top: 3px; opacity: .85; }
-  .connector-close { border: 0; background: transparent; color: #fff; font-size: 24px; cursor: pointer; }
-  .connector-messages { padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-  .connector-message { max-width: 92%; padding: 10px 12px; border-radius: 12px; background: #eef4fa; line-height: 1.45; font-size: 14px; }
+  .connector-head small { display: block; margin-top: 3px; opacity: .85; overflow-wrap: anywhere; }
+  .connector-close {
+    display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px;
+    border: 0; border-radius: 50%; background: transparent; color: #fff;
+    font-size: 24px; cursor: pointer;
+  }
+  .connector-close:hover { background: rgba(255,255,255,.14); }
+  .connector-messages {
+    flex: 1 1 auto; min-height: 0; padding: 16px; overflow-y: auto;
+    overscroll-behavior: contain; display: flex; flex-direction: column; gap: 10px;
+  }
+  .connector-message {
+    max-width: 92%; padding: 10px 12px; border-radius: 12px;
+    background: #eef4fa; line-height: 1.45; font-size: 14px; overflow-wrap: anywhere;
+  }
   .connector-message.user { align-self: flex-end; color: #fff; background: #087fbd; }
-  .connector-quick { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 16px 14px; }
-  .connector-quick button { border: 1px solid #cbd9e8; border-radius: 999px; padding: 7px 10px; background: #fff; color: #17416c; cursor: pointer; font: inherit; font-size: 12px; }
+  .connector-quick { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 7px; padding: 0 16px 14px; }
+  .connector-quick button {
+    box-sizing: border-box; min-height: 44px; max-width: 100%; padding: 7px 10px;
+    border: 1px solid #cbd9e8; border-radius: 999px;
+    background: #fff; color: #17416c; cursor: pointer; font: inherit; font-size: 12px;
+    text-align: left; overflow-wrap: anywhere;
+  }
   .connector-quick button:hover { background: #eef6fc; }
-  .connector-note { padding: 10px 15px; border-top: 1px solid #e6edf5; color: #617187; font-size: 11px; }
+  .connector-note {
+    flex: 0 0 auto; padding: 10px 15px; border-top: 1px solid #e6edf5;
+    color: #617187; font-size: 11px; overflow-wrap: anywhere;
+  }
+  @supports (height: 100dvh) {
+    .connector-panel { max-height: min(480px, calc(100dvh - 160px - env(safe-area-inset-top))); }
+  }
   @media (max-width: 480px) {
-    .connector-launcher { right: 14px; bottom: 82px; }
-    .connector-panel { right: 12px; bottom: 137px; }
+    .connector-launcher {
+      right: max(14px, env(safe-area-inset-right));
+      bottom: calc(82px + env(safe-area-inset-bottom));
+    }
+    .connector-panel {
+      right: max(12px, env(safe-area-inset-right));
+      bottom: calc(137px + env(safe-area-inset-bottom));
+      width: min(350px, calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+      max-height: min(480px, calc(100vh - 153px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+    }
+  }
+  @media (max-width: 480px) and (max-height: 500px) {
+    .connector-launcher { bottom: max(12px, calc(12px + env(safe-area-inset-bottom))); }
+    .connector-panel {
+      bottom: max(12px, calc(12px + env(safe-area-inset-bottom)));
+      max-height: min(480px, calc(100vh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+    }
+  }
+  @supports (height: 100dvh) {
+    @media (max-width: 480px) {
+      .connector-panel {
+        max-height: min(480px, calc(100dvh - 153px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+      }
+    }
+    @media (max-width: 480px) and (max-height: 500px) {
+      .connector-panel {
+        max-height: min(480px, calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+      }
+    }
   }
 </style>
 

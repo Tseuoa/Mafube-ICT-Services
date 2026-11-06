@@ -1414,13 +1414,17 @@
   }
   .connector-panel {
     position: fixed;
+    left: max(12px, env(safe-area-inset-left));
     right: max(12px, env(safe-area-inset-right));
     bottom: 145px;
     z-index: 1001;
     display: none;
     flex-direction: column;
     box-sizing: border-box;
-    width: min(350px, calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+    width: auto;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: 0;
     max-height: min(480px, calc(100vh - 160px));
     overflow: hidden;
     border: 1px solid #d8e2ef;
@@ -1483,7 +1487,6 @@
     .connector-panel {
       right: max(12px, env(safe-area-inset-right));
       bottom: calc(137px + env(safe-area-inset-bottom));
-      width: min(350px, calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));
       max-height: min(480px, calc(100vh - 153px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
     }
   }

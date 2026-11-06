@@ -1,6 +1,7 @@
 # Mafube ICT Services — Connector backend
 
 Connector is a Node.js API for the website chat. It supports OpenAI, Azure OpenAI, Google Gemini, and Anthropic Claude. Provider credentials stay in the backend environment; never put API keys in `index.html`, browser code, or a committed file.
+GitHub Pages is static hosting and cannot safely store provider credentials or run this API; do not add provider secrets to the website repository settings.
 
 ## Deploy the backend
 

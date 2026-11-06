@@ -4,7 +4,7 @@ Connector is a Node.js API for the website chat. It supports OpenAI, Azure OpenA
 
 ## Deploy the backend
 
-1. Deploy this `connector-backend` directory to a Node.js host with Node.js 20+, HTTPS, and private environment-variable support (for example Render, Railway, or your own server). GitHub Pages hosts the static website, not this API.
+1. Deploy this `connector-backend` directory to a Node.js host with Node.js 20+, HTTPS, and private environment-variable support (for example Render, Railway, or your own server). GitHub Pages hosts the static website, not this API. The existing Render contact-form API is a separate service and does not host or configure Connector.
 2. Set `ALLOWED_ORIGINS` to the exact production origins that serve the site: `https://mafubeservices.co.za,https://www.mafubeservices.co.za`. Remove an origin if that hostname does not serve the site. For local testing, add the exact local site origin, such as `http://localhost:8000`.
 3. Configure the key and model for every provider you want enabled. Each provider requires its own API account and API billing; ChatGPT, Microsoft 365, Google One, or Claude chat subscriptions do not pay for API usage.
 4. For Azure OpenAI, also set the resource endpoint (for example `https://YOUR-RESOURCE.openai.azure.com`), the exact model deployment name created in Azure, and an API version supported by that Azure resource. The endpoint must use HTTPS.
